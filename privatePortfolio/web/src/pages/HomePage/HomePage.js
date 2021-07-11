@@ -9,10 +9,11 @@ const HomePage = () => {
     <div className="landingPageContainer min-h-screen w-screen overflow-x-hidden">
       <div className="amazingCarousel_1 fixed -z-9 h-screen w-screen"></div>
       <div
-        className={`fixed flex transform transition-all -z-10 ease-linear duration-3000 -translate-x-${carouselX.translateX}`}
+        className={`amazingCarouselGroup2 fixed flex transform transition-all -z-10 ease-linear duration-1000 -translate-x-${carouselX.translateX}/3`}
       >
         <div className={'amazingCarousel_2 -z-10 h-screen w-screen'}></div>
         <div className={'amazingCarousel_2a -z-10 h-screen w-screen'}></div>
+        <div className={'amazingCarousel_2b -z-10 h-screen w-screen'}></div>
       </div>
 
       <div className="amazingCarousel_3 fixed -z-10 h-screen w-screen"></div>
@@ -30,7 +31,7 @@ const HomePage = () => {
           setCarouselX((state) => {
             return {
               ...state,
-              translateX: '1/2',
+              translateX: ++state.translateX,
             }
           })
           console.log(carouselX.translateX)

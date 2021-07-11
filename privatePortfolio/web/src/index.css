@@ -28,23 +28,31 @@ body {
   clip-path: polygon(25% 0, 0 0, 0 100%, 0 100%);
 }
 
+/* *amazinCarousel Gropu 2 */
 .amazingCarousel_2 {
   background-image: url('./resource/pic_2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  clip-path: polygon(25% 0, 50% 0, 25% 100%, 0% 100%);
-  /* animation: amazingCarousel_2 2s infinite; */
+  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+  /* clip-path: polygon(25% 0, 50% 0, 25% 100%, 0% 100%); */
 }
 .amazingCarousel_2a {
-  background-image: url('./resource/pic_3.jpg');
+  background-image: url('./resource/pic_2a.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  clip-path: polygon(25% 0, 50% 0, 25% 100%, 0% 100%);
-  /* animation: amazingCarousel_2 2s infinite; */
+  /* clip-path: polygon(0 0, 50% 0, 25% 100%, 0% 100%); */
+}
+.amazingCarousel_2b {
+  background-image: url('./resource/pic_1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  /* clip-path: polygon(0 0, 50% 0, 25% 100%, 0% 100%); */
 }
 
 @keyframes amazingCarousel_2 {
@@ -55,6 +63,9 @@ body {
     clip-path: polygon(100% 0, 100% 0, 100% 0);
   }
 }
+/** --- */
+
+/* *amazinCarousel Gropu 3 */
 
 .amazingCarousel_3 {
   background-image: url('./resource/pic_3.jpg');
@@ -62,8 +73,29 @@ body {
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  clip-path: polygon(50% 0, 75% 0, 50% 100%, 25% 100%);
+  /* clip-path: polygon(50% 0, 75% 0, 50% 100%, 25% 100%); */
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 25% 100%);
 }
+
+/* .amazingCarousel_3a {
+  background-image: url('./resource/pic_3a.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+
+}
+
+.amazingCarousel_3b {
+  background-image: url('./resource/pic_1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+
+} */
+
+/** --- */
 .amazingCarousel_4 {
   background-image: url('./resource/pic_4.jpg');
   background-repeat: no-repeat;

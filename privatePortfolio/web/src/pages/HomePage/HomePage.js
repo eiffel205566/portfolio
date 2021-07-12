@@ -6,6 +6,7 @@ const HomePage = () => {
     extended: false,
     current: 1,
     currentA: 1,
+    diplayedText: '',
   })
 
   const randomPick = () => {
@@ -60,7 +61,11 @@ const HomePage = () => {
         }}
         className="sectionOneContainer h-screen w-screen -z-10"
       >
-        <div className="h-full w-full bg-gray-300 bg-opacity-40 absolute top-0 left-0 -z-5"></div>
+        <div className="text-center h-full w-full bg-gray-300 bg-opacity-40 absolute top-0 left-0 -z-5">
+          <div className="h-full flex flex-col justify-center">
+            <div className="love text-7xl">{carouselX.diplayedText}</div>
+          </div>
+        </div>
         {/*
       
        */}

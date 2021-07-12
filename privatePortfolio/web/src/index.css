@@ -12,6 +12,10 @@
  * END --- TAILWIND GENERATOR EDIT
  */
 
+.love {
+  font-family: 'Lobster', cursive;
+}
+
 body {
   overflow-x: hidden !important;
 }

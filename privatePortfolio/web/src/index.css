@@ -19,14 +19,47 @@ body {
   overflow-x: hidden !important;
 }
 
+/* *amazinCarousel Gropu 1 */
+
 .amazingCarousel_1 {
   background-image: url('./resource/pic_1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  clip-path: polygon(25% 0, 0 0, 0 100%, 0 100%);
+  /* clip-path: polygon(25% 0, 0 0, 0 100%, 0 100%); */
+  /* clip-path: polygon(0 0, 25% 0, 0 100%, 0% 100%); */
+  /* animation: amazingCarousel_1 1s forwards; */
 }
+
+.amazingCarousel_1_extended {
+  /* background-image: url('./resource/pic_1.jpg'); */
+  /* background-image: url('./resource/PIC01.gif'); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+.extended {
+  animation: amazingCarousel_1_extended 1s forwards;
+}
+
+.fading {
+  z-index: -9 !important;
+  animation: fading 1s forwards;
+}
+
+.amazingCarousel_1a {
+  background-image: url('./resource/pic_1a.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  /* clip-path: polygon(25% 0, 0 0, 0 100%, 0 100%); */
+}
+
+/* *--- */
 
 /* *amazinCarousel Gropu 2 */
 .amazingCarousel_2 {
@@ -35,7 +68,8 @@ body {
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+  /* clip-path: polygon(25% 0, 100% 0, 75% 100%, 0 100%); */
+  /* clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%); */
   /* clip-path: polygon(25% 0, 50% 0, 25% 100%, 0% 100%); */
 }
 .amazingCarousel_2a {
@@ -44,25 +78,29 @@ body {
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  /* clip-path: polygon(0 0, 50% 0, 25% 100%, 0% 100%); */
-}
-.amazingCarousel_2b {
-  background-image: url('./resource/pic_1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: center;
-  background-position-y: center;
-  /* clip-path: polygon(0 0, 50% 0, 25% 100%, 0% 100%); */
+  /* clip-path: polygon(25% 0, 100% 0, 75% 100%, 0 100%); */
+  /* clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%); */
+  /* clip-path: polygon(25% 0, 50% 0, 25% 100%, 0% 100%); */
 }
 
-@keyframes amazingCarousel_2 {
+@keyframes amazingCarousel_1_extended {
   0% {
-    clip-path: polygon(0 0, 100% 100%, 100% 0);
+    clip-path: polygon(0 0, 25% 0, 0 100%, 0% 100%);
   }
   100% {
-    clip-path: polygon(100% 0, 100% 0, 100% 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 }
+
+@keyframes fading {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+}
+
 /** --- */
 
 /* *amazinCarousel Gropu 3 */
@@ -74,49 +112,56 @@ body {
   background-position-x: center;
   background-position-y: center;
   /* clip-path: polygon(50% 0, 75% 0, 50% 100%, 25% 100%); */
-  clip-path: polygon(50% 0, 100% 0, 100% 100%, 25% 100%);
+  /* clip-path: polygon(50% 0, 100% 0, 100% 100%, 25% 100%); */
 }
-
-/* .amazingCarousel_3a {
+.amazingCarousel_3a {
   background-image: url('./resource/pic_3a.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-
+  /* clip-path: polygon(50% 0, 75% 0, 50% 100%, 25% 100%); */
+  /* clip-path: polygon(50% 0, 100% 0, 100% 100%, 25% 100%); */
 }
 
-.amazingCarousel_3b {
-  background-image: url('./resource/pic_1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: center;
-  background-position-y: center;
-
-} */
-
 /** --- */
+
+/* *amazinCarousel Gropu 4 */
 .amazingCarousel_4 {
   background-image: url('./resource/pic_4.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  clip-path: polygon(75% 0, 100% 0, 75% 100%, 50% 100%);
+  /* clip-path: polygon(75% 0, 100% 0, 75% 100%, 50% 100%); */
 }
+.amazingCarousel_4a {
+  background-image: url('./resource/pic_4a.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  /* clip-path: polygon(75% 0, 100% 0, 75% 100%, 50% 100%); */
+}
+
+/** --- */
+
+/* *amazinCarousel Gropu 5 */
 .amazingCarousel_5 {
   background-image: url('./resource/pic_5.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  clip-path: polygon(100% 0, 100% 0, 100% 100%, 75% 100%);
+  /* clip-path: polygon(100% 0, 100% 0, 100% 100%, 75% 100%); */
+}
+.amazingCarousel_5a {
+  background-image: url('./resource/pic_5a.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  /* clip-path: polygon(100% 0, 100% 0, 100% 100%, 75% 100%); */
 }
 
-/* 
-1: clip-path: polygon(25% 0, 0 0, 0 100%, 0 100%);
-2: clip-path: polygon(25% 0, 50% 0, 25% 100%, 0% 100%);
-3: clip-path: polygon(50% 0, 75% 0, 50% 100%, 25% 100%);
-4: clip-path: polygon(75% 0, 100% 0, 75% 100%, 50% 100%);
-5: clip-path: polygon(100% 0, 100% 0, 100% 100%, 75% 100%);
-*/
+/** --- */

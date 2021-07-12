@@ -1,46 +1,71 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const HomePage = () => {
   const [carouselX, setCarouselX] = useState({
     translateX: 0,
+    extended: false,
+    current: 1,
+    currentA: 1,
   })
+
+  const randomPick = () => {
+    const toPickFrom = [1, 2, 3, 4, 5]
+    return toPickFrom[Math.floor(Math.random() * toPickFrom.length)]
+  }
+
+  useEffect(() => {
+    if (carouselX.translateX % 2 === 1) return
+    setCarouselX((state) => {
+      return {
+        ...state,
+        current: randomPick(),
+      }
+    })
+  }, [carouselX.translateX])
+
+  useEffect(() => {
+    if (carouselX.translateX % 2 === 0) return
+    setCarouselX((state) => {
+      return {
+        ...state,
+        currentA: randomPick(),
+      }
+    })
+  }, [carouselX.translateX])
 
   return (
     <div className="landingPageContainer min-h-screen w-screen overflow-x-hidden">
-      <div className="amazingCarousel_1 fixed -z-9 h-screen w-screen"></div>
       <div
-        className={`amazingCarouselGroup2 fixed flex transform transition-all -z-10 ease-linear duration-1000 -translate-x-${carouselX.translateX}/3`}
-      >
-        <div className={'amazingCarousel_2 -z-10 h-screen w-screen'}></div>
-        <div className={'amazingCarousel_2a -z-10 h-screen w-screen'}></div>
-        <div className={'amazingCarousel_2b -z-10 h-screen w-screen'}></div>
-      </div>
+        className={`amazingCarousel_${carouselX.current} ${
+          carouselX.translateX % 2 === 1 ? 'fading' : ''
+        } h-screen w-screen fixed -z-10`}
+      ></div>
 
-      <div className="amazingCarousel_3 fixed -z-10 h-screen w-screen"></div>
-      <div className="amazingCarousel_4 fixed -z-10 h-screen w-screen"></div>
-      <div className="amazingCarousel_5 fixed -z-10 h-screen w-screen"></div>
-      {/*
+      {carouselX.translateX ? (
         <div
-          className={`amazingCarousel_2 fixed -z-10 h-screen w-screen transform transition-all ease-linear duration-3000 translate-x-${carouselX.translateX}`}
+          className={`amazingCarousel_${carouselX.currentA}a ${
+            carouselX.translateX % 2 === 0 ? 'fading' : ''
+          } h-screen w-screen fixed -z-11`}
         ></div>
-      transform transition-all duration-500 ease-in-out
-       */}
-
+      ) : null}
       <section
         onClick={() => {
           setCarouselX((state) => {
             return {
               ...state,
               translateX: ++state.translateX,
+              next: state.next === 3 ? 1 : ++state.next,
             }
           })
-          console.log(carouselX.translateX)
         }}
-        className="placeholder h-screen w-screen -z-10"
-      ></section>
-      <Placeholder color="bg-gray-300 z-10" />
-      <Placeholder color="bg-gray-400 z-10" />
-      <Placeholder color="bg-gray-500 z-10" />
+        className="sectionOneContainer h-screen w-screen -z-10"
+      >
+        <div className="h-full w-full bg-gray-300 bg-opacity-40 absolute top-0 left-0 -z-5"></div>
+        {/*
+      
+       */}
+      </section>
+
       <Placeholder color="bg-gray-300 z-10" />
       <Placeholder color="bg-gray-400 z-10" />
       <Placeholder color="bg-gray-500 z-10" />
@@ -65,6 +90,13 @@ const HomePage = () => {
 
 export default HomePage
 
-const Placeholder = ({ color }) => {
-  return <div className={`h-40 ${color} mx-auto text-center w-full`}>xxxx</div>
+const Placeholder = ({ color, content, onClick }) => {
+  return (
+    <div
+      onClick={onClick}
+      className={`h-40 ${color} mx-auto text-center w-full`}
+    >
+      {content ? content : 'xxx'}
+    </div>
+  )
 }

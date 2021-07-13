@@ -89,7 +89,19 @@ body {
 
 @keyframes amazingCarousel_1_extended {
   0% {
-    clip-path: polygon(0 0, 25% 0, 0 100%, 0% 100%);
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+    /* clip-path: polygon(0 0, 25% 0, 0 100%, 0% 100%); */
   }
   100% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -169,3 +181,7 @@ body {
 }
 
 /** --- */
+
+.bgUpdateButton {
+  transform: translateY(200%);
+}

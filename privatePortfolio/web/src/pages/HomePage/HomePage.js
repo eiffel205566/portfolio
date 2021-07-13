@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import randomnizeLetters from './UtilRandomLetter'
+import SectionOne from './SectionOne'
 
 const HomePage = () => {
   const [carouselX, setCarouselX] = useState({
     translateX: 0,
     extended: false,
-    current: 1,
-    currentA: 1,
+    current: 1, //1st picture layer
+    currentA: 1, //2nd picture layer
     displayedText: ['x'],
     randomnizationCount: 0,
     timeId: null,
@@ -110,39 +110,33 @@ const HomePage = () => {
           } h-screen w-screen fixed -z-11`}
         ></div>
       ) : null}
-      <section className="sectionOneContainer h-screen w-screen -z-10 flex flex-col justify-center">
-        <div
-          onClick={() => {
-            setCarouselX((state) => {
-              return {
-                ...state,
-                translateX: ++state.translateX,
-                next: state.next === 3 ? 1 : ++state.next,
-              }
-            })
-          }}
-          className="bgUpdateButton select-none h-10 w-48 border rounded-3xl mx-auto hover:text-green-500 z-10 cursor-pointer transform transition-all duration-500"
-        >
-          <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center z-10">
-            <span className="love text-xl z-10 text-center">New Wallpaper</span>
-          </div>
-        </div>
-        <div className="gray300overlay text-center h-full w-full bg-gray-300 bg-opacity-40 absolute top-0 left-0 -z-5">
-          <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center">
-            <div className="welcomeMessage love text-7xl flex justify-center">
-              {carouselX.displayedText.map((letter, index) => {
-                if (index > 6) {
-                  return null
-                } else {
-                  return <span key={index}>{letter}</span>
-                }
-              })}
-            </div>
+
+      <SectionOne carouselX={carouselX} setCarouselX={setCarouselX} />
+
+      <div className="pushDownTen w-full h-10 bg-gray-300 bg-opacity-40"></div>
+
+      <section className="sectionTwo bg-overlay relative">
+        <div className="introHeader h-10 w-48 bg-gray-300 border rounded-3xl absolute top-0 right-1/2 transform -translate-y-1/2 translate-x-1/2">
+          <div className="h-full flex flex-col justify-center">
+            <span className="love text-xl text-center text-gray-700">
+              Myself
+            </span>
           </div>
         </div>
         {/*
-      
-       */}
+        
+          <div className="h-full w-96 bg-green-300 border-gray-500"></div>
+         */}
+        <div className="sectionTowContainer max-w-5xl mx-auto flex flex-col sm:flex-row border">
+          <div className="myHeadLiterally w-full sm:w-1/2 h-96 mt-5 sm:m-10"></div>
+          <div className="myIntro w-full sm:w-1/2 h-96 flex flex-col text-white my-5 sm:m-10">
+            <p className="text-center w-full">Lorem ipsum dolor sit amet.</p>
+            <p className="text-center">Lorem ipsum dolor sit amet.</p>
+            <p className="text-center">Lorem ipsum dolor sit amet.</p>
+            <p className="text-center">Lorem ipsum dolor sit amet.</p>
+            <p className="text-center">Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
       </section>
 
       <Placeholder color="bg-gray-300 z-10" />

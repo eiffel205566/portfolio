@@ -185,3 +185,12 @@ body {
 .bgUpdateButton {
   transform: translateY(200%);
 }
+
+.myHeadLiterally {
+  background-image: url('./resource/pic_5.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  clip-path: polygon(50% 0%, 80% 50%, 50% 100%, 20% 50%);
+}

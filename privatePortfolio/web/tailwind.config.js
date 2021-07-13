@@ -40,7 +40,15 @@ module.exports = {
         danger: '#e3342f',
         golden: '#ffda00',
       }),
+      textColor: (theme) => ({
+        ...theme('colors'),
+        gradient: 'linear-gradient(45deg, #f3ec78, #af4261)',
+      }),
     },
+  },
+  textColor: (theme) => theme('colors'),
+  textColor: {
+    gradient: '#f3ec78',
   },
   variants: {
     extend: {},

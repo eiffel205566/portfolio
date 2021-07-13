@@ -187,10 +187,31 @@ body {
 }
 
 .myHeadLiterally {
-  background-image: url('./resource/pic_5.jpg');
+  background-image: url('../src/resource/Capture.jpg');
+  /* background-image: url('./resource/pic_5a.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
-  background-position-y: center;
-  clip-path: polygon(50% 0%, 80% 50%, 50% 100%, 20% 50%);
+  background-position-y: bottom;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.html5 {
+  background: linear-gradient(45deg, #f3ec78, #af4261);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
 }

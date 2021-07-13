@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import SectionOne from './SectionOne'
+import SectionTwoLeft from './SectionTwoLeft'
+
+import { AiOutlineHtml5 } from 'react-icons/ai'
 
 const HomePage = () => {
   const [carouselX, setCarouselX] = useState({
@@ -127,9 +130,9 @@ const HomePage = () => {
         
           <div className="h-full w-96 bg-green-300 border-gray-500"></div>
          */}
-        <div className="sectionTowContainer max-w-5xl mx-auto flex flex-col sm:flex-row border">
-          <div className="myHeadLiterally w-full sm:w-1/2 h-96 mt-5 sm:m-10"></div>
-          <div className="myIntro w-full sm:w-1/2 h-96 flex flex-col text-white my-5 sm:m-10">
+        <div className="sectionTowContainer max-w-5xl mx-auto flex flex-col sm:flex-row">
+          <SectionTwoLeft />
+          <div className="myIntro w-full sm:w-1/2 h-96 flex flex-col text-white my-5 sm:my-10">
             <p className="text-center w-full">Lorem ipsum dolor sit amet.</p>
             <p className="text-center">Lorem ipsum dolor sit amet.</p>
             <p className="text-center">Lorem ipsum dolor sit amet.</p>

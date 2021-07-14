@@ -1,11 +1,19 @@
 import React from 'react'
 
-export const Html5 = ({ className }) => {
+export const Html5 = ({
+  className,
+  onMouseEnter,
+  onMouseLeave,
+  identifier,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      identifier={identifier}
     >
       <path fill="#E65100" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z" />
       <path fill="#FF6D00" d="M24 8L24 39.9 35.2 36.7 37.7 8z" />
@@ -21,12 +29,15 @@ export const Html5 = ({ className }) => {
   )
 }
 
-export const Sass = ({ className }) => {
+export const Sass = ({ className, onMouseEnter, onMouseLeave, identifier }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      identifier={identifier}
     >
       <path
         fill="#f06292"
@@ -40,12 +51,20 @@ export const Sass = ({ className }) => {
   )
 }
 
-export const ReactIcon = ({ className }) => {
+export const ReactIcon = ({
+  className,
+  onMouseEnter,
+  onMouseLeave,
+  identifier,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      identifier={identifier}
     >
       <path
         fill="#80deea"
@@ -64,12 +83,20 @@ export const ReactIcon = ({ className }) => {
   )
 }
 
-export const Graphql = ({ className }) => {
+export const Graphql = ({
+  className,
+  onMouseEnter,
+  onMouseLeave,
+  identifier,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      identifier={identifier}
     >
       <path
         fill="#ff4081"
@@ -89,12 +116,20 @@ export const Graphql = ({ className }) => {
   )
 }
 
-export const Github = ({ className }) => {
+export const Github = ({
+  className,
+  onMouseEnter,
+  onMouseLeave,
+  identifier,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      identifier={identifier}
     >
       <path
         fill="#fff"
@@ -120,12 +155,20 @@ export const Github = ({ className }) => {
   )
 }
 
-export const Python = ({ className }) => {
+export const Python = ({
+  className,
+  onMouseEnter,
+  onMouseLeave,
+  identifier,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      identifier={identifier}
     >
       <path
         fill="#0277BD"
@@ -139,12 +182,20 @@ export const Python = ({ className }) => {
   )
 }
 
-export const Apollo = ({ className }) => {
+export const Apollo = ({
+  className,
+  onMouseEnter,
+  onMouseLeave,
+  identifier,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      identifier={identifier}
     >
       <path
         fill="#512da8"
@@ -158,12 +209,15 @@ export const Apollo = ({ className }) => {
   )
 }
 
-export const Css = ({ className }) => {
+export const Css = ({ className, onMouseEnter, onMouseLeave, identifier }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      identifier={identifier}
     >
       <path fill="#0277BD" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z" />
       <path fill="#039BE5" d="M24 8L24 39.9 35.2 36.7 37.7 8z" />
@@ -179,12 +233,20 @@ export const Css = ({ className }) => {
   )
 }
 
-export const Mongo = ({ className }) => {
+export const Mongo = ({
+  className,
+  onMouseEnter,
+  onMouseLeave,
+  identifier,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      identifier={identifier}
     >
       <path
         fill="#5d4037"
@@ -204,12 +266,20 @@ export const Mongo = ({ className }) => {
   )
 }
 
-export const Javascript = ({ className }) => {
+export const Javascript = ({
+  className,
+  onMouseEnter,
+  onMouseLeave,
+  identifier,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      identifier={identifier}
     >
       <path fill="#ffd600" d="M6,42V6h36v36H6z" />
       <path

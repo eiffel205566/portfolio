@@ -128,11 +128,10 @@ const SectionTwoLeftOneRowComponent = ({
       <div className={iconContainerClassNames}>
         {icons.map((Icon, index) => {
           return (
-            <Icon
+            <div
               key={index}
               identifier={`${identifier}_${index}`}
-              className={iconClassNames}
-              className={`${iconClassNames} ${
+              className={`h-14 w-14 ${iconClassNames} ${
                 spinState.spinning &&
                 `${identifier}_${index}` === spinState.target
                   ? 'spinning'
@@ -148,7 +147,19 @@ const SectionTwoLeftOneRowComponent = ({
                 })
               }}
               onMouseLeave={onMouseLeave}
-            />
+            >
+              <Icon
+                // className="h-14 w-14"
+                // key={index}
+                identifier={`${identifier}_${index}`}
+                className={`${iconClassNames} ${
+                  spinState.spinning &&
+                  `${identifier}_${index}` === spinState.target
+                    ? 'spinning'
+                    : ''
+                }`}
+              />
+            </div>
           )
         })}
       </div>

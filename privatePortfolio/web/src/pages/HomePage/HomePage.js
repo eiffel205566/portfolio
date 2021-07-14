@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import SectionOne from './SectionOne'
 import SectionTwoLeft from './SectionTwoLeft'
+import SectionTwoRight from './SectionTwoRight'
 
 import { AiOutlineHtml5 } from 'react-icons/ai'
 
@@ -126,19 +127,10 @@ const HomePage = () => {
             </span>
           </div>
         </div>
-        {/*
-        
-          <div className="h-full w-96 bg-green-300 border-gray-500"></div>
-         */}
-        <div className="sectionTowContainer max-w-5xl mx-auto flex flex-col sm:flex-row">
+
+        <div className="sectionTwoContainer max-w-5xl mx-auto flex flex-col sm:flex-row">
           <SectionTwoLeft />
-          <div className="myIntro w-full sm:w-1/2 h-96 flex flex-col text-white my-5 sm:my-10">
-            <p className="text-center w-full">Lorem ipsum dolor sit amet.</p>
-            <p className="text-center">Lorem ipsum dolor sit amet.</p>
-            <p className="text-center">Lorem ipsum dolor sit amet.</p>
-            <p className="text-center">Lorem ipsum dolor sit amet.</p>
-            <p className="text-center">Lorem ipsum dolor sit amet.</p>
-          </div>
+          <SectionTwoRight />
         </div>
       </section>
 

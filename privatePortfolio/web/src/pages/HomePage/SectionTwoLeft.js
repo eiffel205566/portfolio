@@ -13,7 +13,7 @@ import {
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-const SectionTwoLeft = () => {
+const SectionTwoLeft = ({ carouselX }) => {
   const [spinState, setSpinState] = useState({
     target: null,
     spinning: false,
@@ -49,6 +49,7 @@ const SectionTwoLeft = () => {
           onMouseEnter('#1')
         }}
         onMouseLeave={onMouseLeave}
+        carouselX={carouselX}
       />
 
       <SectionTwoLeftOneRowComponent
@@ -111,6 +112,7 @@ const SectionTwoLeftOneRowComponent = ({
   spinState,
   setSpinState,
   identifier,
+  carouselX,
 }) => {
   const onMouseLeave = () => {
     setSpinState((state) => {
@@ -175,6 +177,7 @@ const SectionTwoLeftOneRow = ({
   onMouseLeave,
   spinState,
   identifier,
+  carouselX,
 }) => {
   const iconContainerClassNames = 'iconContainer h-14 w-44 flex justify-center'
   return (

@@ -4,12 +4,12 @@ const Letter = ({ letter, index, len, direction }) => {
 
   if (Object.is(undefined, direction) || direction === 'forward') {
     //forward
-    ms = index * 100 + 'ms'
+    ms = index * 20 + 'ms'
     style = {
       opacity: '0',
       animationName: 'letterOpacity',
       animationTimingFunction: 'ease-in-out',
-      animationDuration: '1s',
+      animationDuration: '0.2s',
       animationDelay: ms,
       animationIterationCount: 1,
       animationDirection: 'normal',

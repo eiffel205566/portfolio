@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import SectionOne from './SectionOne'
 import SectionTwoLeft from './SectionTwoLeft'
 import SectionTwoRight from './SectionTwoRight'
@@ -14,6 +14,8 @@ const HomePage = () => {
     displayedText: ['x'],
     randomnizationCount: 0,
     timeId: null,
+    loaded: false,
+    sectionTwoLeftVisible: false,
   })
 
   const randomPick = () => {
@@ -99,8 +101,62 @@ const HomePage = () => {
     }, 100)
   }, [carouselX.displayedText])
 
+  //! handling viewport visibility check with  IntersectionObserver
+  const sectionTwoLeftContainer = document.getElementById(
+    'sectionTwoLeftContainer'
+  )
+
+  const landingPageContainer = document.getElementById('landingPageContainer')
+  const landingPageContainerRef = useRef(landingPageContainer)
+
+  const option = { threshold: 0.3 }
+
+  useEffect(() => {
+    if (sectionTwoLeftContainer) {
+      const observerAnimation = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          console.log(entry.isIntersecting)
+          setCarouselX((state) => {
+            return {
+              ...state,
+              sectionTwoLeftVisible: entry.isIntersecting,
+            }
+          })
+        })
+      }, option)
+      observerAnimation.observe(sectionTwoLeftContainer)
+      return () => {
+        if (sectionTwoLeftContainer) {
+          observerAnimation.unobserve(sectionTwoLeftContainer)
+        }
+      }
+    }
+  }, [carouselX.loaded])
+
+  useEffect(() => {
+    setCarouselX((state) => {
+      return {
+        ...state,
+        loaded: true,
+      }
+    })
+
+    return () => {
+      setCarouselX((state) => {
+        return {
+          ...state,
+          loaded: false,
+        }
+      })
+    }
+  }, [landingPageContainerRef.current])
+
   return (
-    <div className="landingPageContainer min-h-screen w-screen overflow-x-hidden">
+    <div
+      id="landingPageContainer"
+      ref={landingPageContainerRef}
+      className="landingPageContainer min-h-screen w-screen overflow-x-hidden"
+    >
       <div
         className={`amazingCarousel_${carouselX.current} ${
           carouselX.translateX % 2 === 1 ? 'fading' : ''
@@ -128,7 +184,10 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="sectionTwoContainer max-w-5xl mx-auto flex flex-col sm:flex-row">
+        <div
+          id="sectionTwoLeftContainer"
+          className="sectionTwoContainer max-w-5xl mx-auto flex flex-col sm:flex-row"
+        >
           <SectionTwoLeft />
           <SectionTwoRight />
         </div>

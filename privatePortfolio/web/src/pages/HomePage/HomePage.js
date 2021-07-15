@@ -16,6 +16,7 @@ const HomePage = () => {
     timeId: null,
     loaded: false,
     sectionTwoLeftVisible: false,
+    sectionTwoRightVisible: false,
   })
 
   const randomPick = () => {
@@ -105,34 +106,64 @@ const HomePage = () => {
   const sectionTwoLeftContainer = document.getElementById(
     'sectionTwoLeftContainer'
   )
+  const sectionTwoRightContainer = document.getElementById(
+    'sectionTwoRightContainer'
+  )
 
   const landingPageContainer = document.getElementById('landingPageContainer')
   const landingPageContainerRef = useRef(landingPageContainer)
 
-  const option = { threshold: 0.3 }
-
   useEffect(() => {
     if (sectionTwoLeftContainer) {
-      const observerAnimation = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          console.log(entry.isIntersecting)
-          setCarouselX((state) => {
-            return {
-              ...state,
-              sectionTwoLeftVisible: entry.isIntersecting,
-            }
+      //! initiate observer
+      const observerSectionTwoLeft = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            // console.log(entry.isIntersecting)
+            setCarouselX((state) => {
+              return {
+                ...state,
+                sectionTwoLeftVisible: entry.isIntersecting,
+              }
+            })
           })
-        })
-      }, option)
-      observerAnimation.observe(sectionTwoLeftContainer)
+        },
+        { threshold: 0.3 }
+      )
+
+      const observerSectionTwoRight = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            setCarouselX((state) => {
+              return {
+                ...state,
+                sectionTwoRightVisible: entry.isIntersecting,
+              }
+            })
+          })
+        },
+        { threshold: 0.3 }
+      )
+
+      //! actually observe things
+      observerSectionTwoLeft.observe(sectionTwoLeftContainer)
+      observerSectionTwoRight.observe(sectionTwoRightContainer)
+
       return () => {
+        //! clear observer when unmount
         if (sectionTwoLeftContainer) {
-          observerAnimation.unobserve(sectionTwoLeftContainer)
+          observerSectionTwoLeft.unobserve(sectionTwoLeftContainer)
+        }
+
+        if (sectionTwoRightContainer) {
+          observerSectionTwoRight.unobserve(sectionTwoRightContainer)
         }
       }
     }
   }, [carouselX.loaded])
 
+  // ! useRef of the top level div, and watch its existance with useEffect
+  // ! flip loaded to true once it is not null so all other can just watch loaded
   useEffect(() => {
     setCarouselX((state) => {
       return {
@@ -184,14 +215,13 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div
-          id="sectionTwoLeftContainer"
-          className="sectionTwoContainer max-w-5xl mx-auto flex flex-col sm:flex-row"
-        >
-          <SectionTwoLeft />
-          <SectionTwoRight />
+        <div className="sectionTwoContainer max-w-5xl mx-auto flex flex-col sm:flex-row">
+          <SectionTwoLeft visible={carouselX.sectionTwoLeftVisible} />
+          <SectionTwoRight visible={carouselX.sectionTwoRightVisible} />
         </div>
       </section>
+
+      <section className="sectionThreeContainermax-w-5xl mx-auto bg-gray-300 min-h-full"></section>
 
       <Placeholder color="bg-gray-300 z-10" />
       <Placeholder color="bg-gray-400 z-10" />

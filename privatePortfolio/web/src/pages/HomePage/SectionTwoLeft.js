@@ -11,9 +11,8 @@ import {
   Javascript,
 } from 'src/components/svg'
 import { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
-const SectionTwoLeft = ({ carouselX }) => {
+const SectionTwoLeft = ({ visible }) => {
   const [spinState, setSpinState] = useState({
     target: null,
     spinning: false,
@@ -40,7 +39,10 @@ const SectionTwoLeft = ({ carouselX }) => {
   }
 
   return (
-    <div className="mx-auto w-80 sm:w-96 my-5 flex flex-col select-none">
+    <div
+      id="sectionTwoLeftContainer"
+      className="mx-auto w-80 sm:w-96 my-5 flex flex-col select-none"
+    >
       <SectionTwoLeftOneRow
         identifier={'#1'}
         text="Sean, Web Dev"
@@ -49,7 +51,7 @@ const SectionTwoLeft = ({ carouselX }) => {
           onMouseEnter('#1')
         }}
         onMouseLeave={onMouseLeave}
-        carouselX={carouselX}
+        visible={visible}
       />
 
       <SectionTwoLeftOneRowComponent
@@ -59,6 +61,7 @@ const SectionTwoLeft = ({ carouselX }) => {
         spinState={spinState}
         setSpinState={setSpinState}
         identifier={'#0'}
+        visible={visible}
       />
 
       <SectionTwoLeftOneRowComponent
@@ -68,6 +71,7 @@ const SectionTwoLeft = ({ carouselX }) => {
         spinState={spinState}
         setSpinState={setSpinState}
         identifier={'#2'}
+        visible={visible}
       />
       <SectionTwoLeftOneRowComponent
         icons={[Css, Sass]}
@@ -76,6 +80,7 @@ const SectionTwoLeft = ({ carouselX }) => {
         spinState={spinState}
         setSpinState={setSpinState}
         identifier={'#3'}
+        visible={visible}
       />
       <SectionTwoLeftOneRowComponent
         icons={[Mongo, Graphql, Apollo]}
@@ -84,6 +89,7 @@ const SectionTwoLeft = ({ carouselX }) => {
         spinState={spinState}
         setSpinState={setSpinState}
         identifier={'#4'}
+        visible={visible}
       />
       <SectionTwoLeftOneRowComponent
         icons={[ReactIcon]}
@@ -92,6 +98,7 @@ const SectionTwoLeft = ({ carouselX }) => {
         spinState={spinState}
         setSpinState={setSpinState}
         identifier={'#5'}
+        visible={visible}
       />
       <SectionTwoLeftOneRowComponent
         icons={[Github]}
@@ -100,6 +107,7 @@ const SectionTwoLeft = ({ carouselX }) => {
         spinState={spinState}
         setSpinState={setSpinState}
         identifier={'#6'}
+        visible={visible}
       />
     </div>
   )
@@ -112,7 +120,7 @@ const SectionTwoLeftOneRowComponent = ({
   spinState,
   setSpinState,
   identifier,
-  carouselX,
+  visible,
 }) => {
   const onMouseLeave = () => {
     setSpinState((state) => {
@@ -126,7 +134,11 @@ const SectionTwoLeftOneRowComponent = ({
 
   const iconContainerClassNames = 'iconContainer h-14 w-44 flex justify-center'
   return (
-    <div className="oneRowContainer w-full h-14 flex justify-between">
+    <div
+      className={`oneRowContainer${
+        visible ? '_visible' : ''
+      } w-full h-14 flex justify-between`}
+    >
       <div className={iconContainerClassNames}>
         {icons.map((Icon, index) => {
           return (
@@ -177,11 +189,15 @@ const SectionTwoLeftOneRow = ({
   onMouseLeave,
   spinState,
   identifier,
-  carouselX,
+  visible,
 }) => {
   const iconContainerClassNames = 'iconContainer h-14 w-44 flex justify-center'
   return (
-    <div className="oneRowContainer w-full h-14 flex justify-between">
+    <div
+      className={`oneRowContainer${
+        visible ? '_visible' : ''
+      } w-full h-14 flex justify-between`}
+    >
       <div className={iconContainerClassNames}>
         <div
           onMouseEnter={onMouseEnter}
@@ -201,28 +217,3 @@ const SectionTwoLeftOneRow = ({
 }
 
 export default SectionTwoLeft
-
-/* 
-<div
-  key={index}
-  identifier={`${identifier}_${index}`}
-  className={`h-14 w-14 border ${iconClassNames} ${
-    spinState.spinning &&
-    `${identifier}_${index}` === spinState.target
-      ? 'spinning'
-      : ''
-  }`}
-  onMouseEnter={(e) => {
-    setSpinState((state) => {
-      return {
-        ...state,
-        spinning: true,
-        target: e.target.getAttribute('identifier'),
-      }
-    })
-  }}
-  onMouseLeave={onMouseLeave}
-</div>
->
-
-*/

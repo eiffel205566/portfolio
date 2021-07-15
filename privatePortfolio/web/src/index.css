@@ -278,3 +278,18 @@ body {
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   will-change: opacity, visibility;
 }
+
+.myIntroSectionTwoRight {
+  opacity: 0;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transform: translateX(20vw);
+  visibility: visible;
+  will-change: opacity, visibility;
+}
+
+.myIntroSectionTwoRight_visible {
+  opacity: 1;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transform: translateX(0vw);
+  visibility: visible;
+}

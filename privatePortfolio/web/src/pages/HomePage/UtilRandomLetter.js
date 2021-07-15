@@ -17,6 +17,6 @@ const randomnizeLetters = (func) => {
 }
 
 export const NOTES =
-  'After working many years in finance industry writing scripting programs, automation tools, web crawlers, VBA macros and deeply-nested-hard-to-understand-yet-necessary Excel functions, I finally relinquished every shred of doubt in my mind and decided that I would not work on anything other than programming and coding, so I taught myself HTML, CSS, Javascript, React, Graphql, Prisma, Apollo, MangoDB in last year, and now I am web dev...'
+  'After working many years in finance industry writing scripting programs, automation tools, web crawlers, macros and deeply-nested-hard-to-understand-yet-necessary Excel functions, I finally relinquished every shred of doubt in my mind and decided that I would not work on anything other than programming and coding, so I taught myself HTML, CSS, Javascript, React, Graphql, Prisma, Apollo, MangoDB in last year, and now I am web dev...'
 
 export default randomnizeLetters

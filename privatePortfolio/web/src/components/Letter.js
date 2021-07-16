@@ -1,3 +1,4 @@
+import { Graphql } from 'src/components/svg'
 const Letter = ({ letter, index, len, direction }) => {
   let ms
   let style
@@ -31,8 +32,12 @@ const Letter = ({ letter, index, len, direction }) => {
   }
 
   return (
-    <span index={index} style={{ ...style }} className="letter">
-      {letter}
+    <span index={index} style={{ ...style }} className="letter relative inline">
+      {typeof letter === 'string' ? (
+        letter
+      ) : (
+        <Graphql className="w-4 h-4 inline" />
+      )}
     </span>
   )
 }

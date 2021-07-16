@@ -1,7 +1,13 @@
-import { NOTES } from './UtilRandomLetter'
 import Letter from 'src/components/Letter'
+import { Graphql } from 'src/components/svg'
 
-const SectionTwoRight = ({ visible }) => {
+const SectionTwoRight = ({ visible, content }) => {
+  let wrappedContent = [
+    ...Array.from(content.slice(0, 50)),
+    testLetter,
+    ...Array.from(content.slice(50, content.length)),
+  ]
+
   return (
     <div
       id="sectionTwoRightContainer"
@@ -14,7 +20,15 @@ const SectionTwoRight = ({ visible }) => {
       </h3>
       {visible ? (
         <h3 className="w-72 sm:w-80 md:w-96 mx-auto text-lg text-white select-none">
-          {Array.from(NOTES).map((letter, index, arr) => (
+          {/* {Array.from(content).map((letter, index, arr) => (
+            <Letter
+              key={index}
+              index={index}
+              letter={letter}
+              len={arr.length}
+            />
+          ))} */}
+          {wrappedContent.map((letter, index, arr) => (
             <Letter
               key={index}
               index={index}
@@ -25,10 +39,18 @@ const SectionTwoRight = ({ visible }) => {
         </h3>
       ) : (
         <h3 className="w-72 sm:w-80 md:w-96 mx-auto text-lg text-white select-none text-opacity-0">
-          {NOTES}
+          {content}
         </h3>
       )}
     </div>
+  )
+}
+
+const testLetter = ({ className }) => {
+  return (
+    <>
+      <Graphql className={className} />
+    </>
   )
 }
 

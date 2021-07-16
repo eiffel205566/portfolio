@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import SectionOne from './SectionOne'
 import SectionTwoLeft from './SectionTwoLeft'
 import SectionTwoRight from './SectionTwoRight'
+import SectionHeader from './SectionHeader'
+import { NOTES } from './UtilRandomLetter'
 
 import { AiOutlineHtml5 } from 'react-icons/ai'
 
@@ -11,12 +13,13 @@ const HomePage = () => {
     extended: false,
     current: 1, //1st picture layer
     currentA: 1, //2nd picture layer
-    displayedText: ['x'],
+    displayedText: ['w', 'e', 'l', 'c', 'm', 'e'],
     randomnizationCount: 0,
     timeId: null,
     loaded: false,
     sectionTwoLeftVisible: false,
     sectionTwoRightVisible: false,
+    animateDemo: false,
   })
 
   const randomPick = () => {
@@ -207,23 +210,63 @@ const HomePage = () => {
       <div className="pushDownTen w-full h-10 bg-gray-300 bg-opacity-40"></div>
 
       <section className="sectionTwo bg-overlay relative">
-        <div className="introHeader h-10 w-48 bg-gray-300 border rounded-3xl absolute top-0 right-1/2 transform -translate-y-1/2 translate-x-1/2">
-          <div className="h-full flex flex-col justify-center">
-            <span className="love text-xl text-center text-gray-700">
-              Myself
-            </span>
-          </div>
-        </div>
+        <SectionHeader text="Myself" color={'gray-300'} />
 
         <div className="sectionTwoContainer max-w-5xl mx-auto flex flex-col sm:flex-row">
           <SectionTwoLeft visible={carouselX.sectionTwoLeftVisible} />
-          <SectionTwoRight visible={carouselX.sectionTwoRightVisible} />
+          <SectionTwoRight
+            visible={carouselX.sectionTwoRightVisible}
+            content={NOTES}
+          />
         </div>
       </section>
 
-      <section className="sectionThreeContainermax-w-5xl mx-auto bg-gray-300 min-h-full"></section>
+      <section className="sectionThree bg-gray-300 relative">
+        <SectionHeader
+          text={'My Works'}
+          color={'sideDark'}
+          textColor={'gray-100'}
+        />
+        <div className="h-10 w-full"></div>
+        <div className="sectionThreeContainer max-w-5xl mx-auto flex flex-col sm:flex-row overflow-hidden min-h-screen">
+          <div className="sectionThreeLeft w-full sm:w-1/2 sm:h-96 flex flex-col my-5 sm:my-10 text-center">
+            <h3 className="love text-gray-500 text-center text-xl w-full">
+              ExpInsight - A Full Stack Project
+            </h3>
+            <div className="w-72 sm:w-80 md:w-96 mx-auto text-lg">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi
+              voluptas dignissimos numquam, quis facere, recusandae officia
+              minima ullam sapiente a libero atque modi, delectus deleniti fugit
+              animi magni. Magni possimus accusantium quos eos. A sit libero
+              illum eum quod laudantium cumque commodi esse inventore magni.
+              Officiis itaque aperiam debitis voluptatem.
+            </div>
+          </div>
 
-      <Placeholder color="bg-gray-300 z-10" />
+          <div
+            onMouseEnter={() => {
+              setCarouselX((state) => {
+                return {
+                  ...state,
+                  animateDemo: true,
+                }
+              })
+            }}
+            onMouseLeave={() => {
+              setCarouselX((state) => {
+                return {
+                  ...state,
+                  animateDemo: false,
+                }
+              })
+            }}
+            className={`expinsight${
+              carouselX.animateDemo ? 'Demo' : ''
+            } h-102 w-66 border border-transparent cursor-pointer mx-auto`}
+          ></div>
+        </div>
+      </section>
+
       <Placeholder color="bg-gray-400 z-10" />
       <Placeholder color="bg-gray-500 z-10" />
       <Placeholder color="bg-gray-300 z-10" />

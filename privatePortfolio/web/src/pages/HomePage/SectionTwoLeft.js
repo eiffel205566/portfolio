@@ -163,8 +163,6 @@ const SectionTwoLeftOneRowComponent = ({
               onMouseLeave={onMouseLeave}
             >
               <Icon
-                // className="h-14 w-14"
-                // key={index}
                 identifier={`${identifier}_${index}`}
                 className={`${iconClassNames} ${
                   spinState.spinning &&
@@ -196,9 +194,14 @@ const SectionTwoLeftOneRow = ({
     <div
       className={`oneRowContainer${
         visible ? '_visible' : ''
-      } w-full h-14 flex justify-between`}
+      } w-full h-14 flex justify-between relative`}
     >
       <div className={iconContainerClassNames}>
+        <div
+          className={`startDust${
+            spinState.spinning && spinState.target === identifier ? '' : 'x'
+          } h-14 w-14 absolute left-0`}
+        ></div>
         <div
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}

@@ -140,6 +140,45 @@ body {
   /* clip-path: polygon(50% 0, 100% 0, 100% 100%, 25% 100%); */
 }
 
+.testContainer {
+  background-image: url('./resource/expinsight.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  max-width: 840px;
+  height: 560px;
+}
+.testContainer2 {
+  background-image: url('./resource/phone.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
+.expinsightDemo {
+  background-image: url('./resource/expinsightSmall.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: left;
+  background-position-y: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.expinsight {
+  background-image: url('./resource/expinsight.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: left;
+  background-position-y: center;
+}
+
+.startDust {
+  background-image: url('./resource/starDust.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
 /** --- */
 
 /* *amazinCarousel Gropu 4 */

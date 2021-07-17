@@ -6,6 +6,7 @@ import SectionHeader from './SectionHeader'
 import { NOTES } from './UtilRandomLetter'
 
 import { AiOutlineHtml5 } from 'react-icons/ai'
+import SectionThreeProjectOneRight from './SectionThreeProjectOneRight'
 
 const HomePage = () => {
   const [carouselX, setCarouselX] = useState({
@@ -20,6 +21,7 @@ const HomePage = () => {
     sectionTwoLeftVisible: false,
     sectionTwoRightVisible: false,
     animateDemo: false,
+    sectionThreeProjectOneRightVisible: false,
   })
 
   const randomPick = () => {
@@ -112,6 +114,9 @@ const HomePage = () => {
   const sectionTwoRightContainer = document.getElementById(
     'sectionTwoRightContainer'
   )
+  const sectionThreeProjectOneRight = document.getElementById(
+    'sectionThreeProjectOneRight'
+  )
 
   const landingPageContainer = document.getElementById('landingPageContainer')
   const landingPageContainerRef = useRef(landingPageContainer)
@@ -148,9 +153,24 @@ const HomePage = () => {
         { threshold: 0.3 }
       )
 
+      const observerSectionThreeProjectOneRight = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            setCarouselX((state) => {
+              return {
+                ...state,
+                sectionThreeProjectOneRightVisible: entry.isIntersecting,
+              }
+            })
+          })
+        }
+        // { threshold: 0.3 }
+      )
+
       //! actually observe things
       observerSectionTwoLeft.observe(sectionTwoLeftContainer)
       observerSectionTwoRight.observe(sectionTwoRightContainer)
+      observerSectionThreeProjectOneRight.observe(sectionThreeProjectOneRight)
 
       return () => {
         //! clear observer when unmount
@@ -160,6 +180,12 @@ const HomePage = () => {
 
         if (sectionTwoRightContainer) {
           observerSectionTwoRight.unobserve(sectionTwoRightContainer)
+        }
+
+        if (sectionThreeProjectOneRight) {
+          observerSectionThreeProjectOneRight.unobserve(
+            sectionThreeProjectOneRight
+          )
         }
       }
     }
@@ -230,7 +256,7 @@ const HomePage = () => {
         <div className="h-10 w-full"></div>
         <div className="sectionThreeContainer max-w-5xl mx-auto flex flex-col sm:flex-row overflow-hidden min-h-screen">
           <div className="sectionThreeLeft w-full sm:w-1/2 sm:h-96 flex flex-col my-5 sm:my-10 text-center">
-            <h3 className="love text-gray-500 text-center text-xl w-full">
+            <h3 className="love text-green-500 text-center text-xl w-full">
               ExpInsight - A Full Stack Project
             </h3>
             <div className="w-72 sm:w-80 md:w-96 mx-auto text-lg">
@@ -243,27 +269,10 @@ const HomePage = () => {
             </div>
           </div>
 
-          <div
-            onMouseEnter={() => {
-              setCarouselX((state) => {
-                return {
-                  ...state,
-                  animateDemo: true,
-                }
-              })
-            }}
-            onMouseLeave={() => {
-              setCarouselX((state) => {
-                return {
-                  ...state,
-                  animateDemo: false,
-                }
-              })
-            }}
-            className={`expinsight${
-              carouselX.animateDemo ? 'Demo' : ''
-            } h-102 w-66 border border-transparent cursor-pointer mx-auto`}
-          ></div>
+          <SectionThreeProjectOneRight
+            setCarouselX={setCarouselX}
+            carouselX={carouselX}
+          />
         </div>
       </section>
 

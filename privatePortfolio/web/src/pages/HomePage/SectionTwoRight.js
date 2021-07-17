@@ -1,10 +1,11 @@
 import Letter from 'src/components/Letter'
-import { Graphql } from 'src/components/svg'
+import { Graphql, Redwood } from 'src/components/svg'
 
 const SectionTwoRight = ({ visible, content }) => {
+  //! wrappedContent is used to insert svg into the array so a svg can be displayed among some letters
   let wrappedContent = [
     ...Array.from(content.slice(0, 50)),
-    testLetter,
+    {},
     ...Array.from(content.slice(50, content.length)),
   ]
 
@@ -49,7 +50,7 @@ const SectionTwoRight = ({ visible, content }) => {
 const testLetter = ({ className }) => {
   return (
     <>
-      <Graphql className={className} />
+      <Redwood className={className} />
     </>
   )
 }

@@ -318,7 +318,8 @@ body {
   will-change: opacity, visibility;
 }
 
-.myIntroSectionTwoRight {
+.myIntroSectionTwoRight,
+.sectionThreeProjectOneRight {
   opacity: 0;
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   transform: translateX(20vw);
@@ -326,7 +327,8 @@ body {
   will-change: opacity, visibility;
 }
 
-.myIntroSectionTwoRight_visible {
+.myIntroSectionTwoRight_visible,
+.sectionThreeProjectOneRight_visible {
   opacity: 1;
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   transform: translateX(0vw);

@@ -47,12 +47,4 @@ const SectionTwoRight = ({ visible, content }) => {
   )
 }
 
-const testLetter = ({ className }) => {
-  return (
-    <>
-      <Redwood className={className} />
-    </>
-  )
-}
-
 export default SectionTwoRight

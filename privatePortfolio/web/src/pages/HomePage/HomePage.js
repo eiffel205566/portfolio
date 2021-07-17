@@ -3,10 +3,11 @@ import SectionOne from './SectionOne'
 import SectionTwoLeft from './SectionTwoLeft'
 import SectionTwoRight from './SectionTwoRight'
 import SectionHeader from './SectionHeader'
-import { NOTES } from './UtilRandomLetter'
+import { NOTES, PROJECTONE } from './UtilRandomLetter'
 
 import { AiOutlineHtml5 } from 'react-icons/ai'
 import SectionThreeProjectOneRight from './SectionThreeProjectOneRight'
+import SectionThreeProjectOneLeft from './SectionThreeProjectOneLeft'
 
 const HomePage = () => {
   const [carouselX, setCarouselX] = useState({
@@ -14,7 +15,9 @@ const HomePage = () => {
     extended: false,
     current: 1, //1st picture layer
     currentA: 1, //2nd picture layer
-    displayedText: ['w', 'e', 'l', 'c', 'm', 'e'],
+    displayedText: ['w', 'e', 'l', 'c', 'o', 'm', 'e'],
+    lastLetter: null,
+    pickedLetter: [],
     randomnizationCount: 0,
     timeId: null,
     loaded: false,
@@ -22,6 +25,7 @@ const HomePage = () => {
     sectionTwoRightVisible: false,
     animateDemo: false,
     sectionThreeProjectOneRightVisible: false,
+    sectionThreeProjectOneLeftVisible: false,
   })
 
   const randomPick = () => {
@@ -73,6 +77,12 @@ const HomePage = () => {
     if (carouselX.randomnizationCount > 6) {
       return () => {
         clearTimeout(carouselX.timeId)
+        setCarouselX((state) => {
+          return {
+            ...state,
+            pickedLetter: [],
+          }
+        })
       }
     } else {
       if (
@@ -83,6 +93,7 @@ const HomePage = () => {
           return {
             ...state,
             randomnizationCount: ++state.randomnizationCount,
+            pickedLetter: [],
           }
         })
       }
@@ -90,8 +101,12 @@ const HomePage = () => {
 
     setTimeout(() => {
       setCarouselX((state) => {
-        const randomPick =
+        let randomPick =
           allLetters[Math.floor(Math.random() * allLetters.length)]
+        while (state.pickedLetter.includes(randomPick)) {
+          randomPick = allLetters[Math.floor(Math.random() * allLetters.length)]
+        }
+
         return {
           ...state,
           displayedText: [
@@ -102,6 +117,8 @@ const HomePage = () => {
               state.displayedText.length
             ),
           ],
+          lastLetter: randomPick,
+          pickedLetter: [...state.pickedLetter, randomPick],
         }
       })
     }, 100)
@@ -114,8 +131,13 @@ const HomePage = () => {
   const sectionTwoRightContainer = document.getElementById(
     'sectionTwoRightContainer'
   )
+  // 'sectionThreeProjectOneRight'
   const sectionThreeProjectOneRight = document.getElementById(
-    'sectionThreeProjectOneRight'
+    'sectionThreeProjectOneRightPlaceholder'
+  )
+
+  const sectionThreeProjectOneLeft = document.getElementById(
+    'sectionThreeProjectOneLeftPlaceholder'
   )
 
   const landingPageContainer = document.getElementById('landingPageContainer')
@@ -156,6 +178,7 @@ const HomePage = () => {
       const observerSectionThreeProjectOneRight = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
+            console.log(entry.isIntersecting)
             setCarouselX((state) => {
               return {
                 ...state,
@@ -163,14 +186,29 @@ const HomePage = () => {
               }
             })
           })
-        }
-        // { threshold: 0.3 }
+        },
+        { threshold: 0.3 }
+      )
+
+      const observerSectionThreeProjectOneLeft = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            setCarouselX((state) => {
+              return {
+                ...state,
+                sectionThreeProjectOneLeftVisible: entry.isIntersecting,
+              }
+            })
+          })
+        },
+        { threshold: 0.3 }
       )
 
       //! actually observe things
       observerSectionTwoLeft.observe(sectionTwoLeftContainer)
       observerSectionTwoRight.observe(sectionTwoRightContainer)
       observerSectionThreeProjectOneRight.observe(sectionThreeProjectOneRight)
+      observerSectionThreeProjectOneLeft.observe(sectionThreeProjectOneLeft)
 
       return () => {
         //! clear observer when unmount
@@ -185,6 +223,12 @@ const HomePage = () => {
         if (sectionThreeProjectOneRight) {
           observerSectionThreeProjectOneRight.unobserve(
             sectionThreeProjectOneRight
+          )
+        }
+
+        if (sectionThreeProjectOneLeft) {
+          observerSectionThreeProjectOneLeft.unobserve(
+            sectionThreeProjectOneLeft
           )
         }
       }
@@ -253,22 +297,12 @@ const HomePage = () => {
           color={'sideDark'}
           textColor={'gray-100'}
         />
-        <div className="h-10 w-full"></div>
-        <div className="sectionThreeContainer max-w-5xl mx-auto flex flex-col sm:flex-row overflow-hidden min-h-screen">
-          <div className="sectionThreeLeft w-full sm:w-1/2 sm:h-96 flex flex-col my-5 sm:my-10 text-center">
-            <h3 className="love text-green-500 text-center text-xl w-full">
-              ExpInsight - A Full Stack Project
-            </h3>
-            <div className="w-72 sm:w-80 md:w-96 mx-auto text-lg">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi
-              voluptas dignissimos numquam, quis facere, recusandae officia
-              minima ullam sapiente a libero atque modi, delectus deleniti fugit
-              animi magni. Magni possimus accusantium quos eos. A sit libero
-              illum eum quod laudantium cumque commodi esse inventore magni.
-              Officiis itaque aperiam debitis voluptatem.
-            </div>
-          </div>
-
+        <div id={'projectOnePushDown'} className="h-10 w-full"></div>
+        <div className="sectionThreeContainer max-w-5xl mx-auto flex flex-col sm:flex-row overflow-hidden">
+          <SectionThreeProjectOneLeft
+            content={PROJECTONE}
+            visible={carouselX.sectionThreeProjectOneLeftVisible}
+          />
           <SectionThreeProjectOneRight
             setCarouselX={setCarouselX}
             carouselX={carouselX}

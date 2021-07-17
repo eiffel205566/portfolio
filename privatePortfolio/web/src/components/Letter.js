@@ -1,4 +1,4 @@
-import { Graphql, Redwood } from 'src/components/svg'
+import { Graphql, Redwood, Tailwind } from 'src/components/svg'
 const Letter = ({ letter, index, len, direction }) => {
   let ms
   let style
@@ -36,7 +36,7 @@ const Letter = ({ letter, index, len, direction }) => {
       {typeof letter === 'string' ? (
         letter
       ) : (
-        <Redwood className="w-4 h-4 inline" />
+        <Tailwind className="w-4 h-4 inline" />
       )}
     </span>
   )

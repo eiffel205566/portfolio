@@ -17,6 +17,19 @@ const randomnizeLetters = (func) => {
 }
 
 export const NOTES =
-  'After working many years in finance industry writing scripting programs, automation tools, web crawlers, macros and deeply-nested-hard-to-understand-yet-necessary Excel functions, I finally relinquished every shred of doubt in my mind and decided that I would not work on anything other than programming and coding, so I taught myself HTML, CSS, Javascript, React, Graphql, Prisma, Apollo, MangoDB in last year, and now I am web dev...'
+  'After working many years in finance industry writing scripting programs,' +
+  'automation tools, web crawlers, macros and deeply-nested-hard-to-understand' +
+  '-yet-necessary Excel functions, I finally relinquished every shred of doubt' +
+  ' in my mind and decided that I would not work on anything other than programming' +
+  ' and coding, so I taught myself HTML, CSS, Javascript, React, Graphql, Prisma,' +
+  ' Apollo, MangoDB in last year, and now I am web dev...'
 
 export default randomnizeLetters
+
+export const PROJECTONE =
+  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptas' +
+  'dignissimos numquam, quis facere, recusandae officia minima ullam' +
+  'sapiente a libero atque modi, delectus deleniti fugit animi magni. Magni' +
+  'possimus accusantium quos eos. A sit libero illum eum quod laudantium' +
+  'cumque commodi esse inventore magni. Officiis itaque aperiam debitis' +
+  'voluptatem.'

@@ -9,6 +9,7 @@ import {
   Css,
   Mongo,
   Javascript,
+  Tailwind,
 } from 'src/components/svg'
 import { useState } from 'react'
 
@@ -74,9 +75,9 @@ const SectionTwoLeft = ({ visible }) => {
         visible={visible}
       />
       <SectionTwoLeftOneRowComponent
-        icons={[Css, Sass]}
+        icons={[Css, Sass, Tailwind]}
         iconClassNames={'h-14 w-14'}
-        text={'CSS3, SASS'}
+        text={'CSS3, SASS, Tailwind'}
         spinState={spinState}
         setSpinState={setSpinState}
         identifier={'#3'}
@@ -201,6 +202,11 @@ const SectionTwoLeftOneRow = ({
           className={`startDust${
             spinState.spinning && spinState.target === identifier ? '' : 'x'
           } h-14 w-14 absolute left-0`}
+        ></div>
+        <div
+          className={`startDust${
+            spinState.spinning && spinState.target === identifier ? '' : 'x'
+          } h-14 w-14 absolute right-1/2 transform rotate-180`}
         ></div>
         <div
           onMouseEnter={onMouseEnter}

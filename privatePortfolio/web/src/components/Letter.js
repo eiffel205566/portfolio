@@ -1,7 +1,24 @@
-import { Graphql, Redwood, Tailwind } from 'src/components/svg'
+import {
+  Graphql,
+  Prisma,
+  Railway,
+  Redwood,
+  Tailwind,
+  ReactIcon,
+  Netlify,
+} from 'src/components/svg'
 const Letter = ({ letter, index, len, direction }) => {
   let ms
   let style
+  const Icons = {
+    react: ReactIcon,
+    gql: Graphql,
+    tailwind: Tailwind,
+    railway: Railway,
+    netlify: Netlify,
+  }
+  let iconName = typeof letter === 'string' ? null : Object.keys(letter)[0]
+  let Icon = iconName ? Icons[iconName] : null
 
   if (Object.is(undefined, direction) || direction === 'forward') {
     //forward
@@ -36,7 +53,7 @@ const Letter = ({ letter, index, len, direction }) => {
       {typeof letter === 'string' ? (
         letter
       ) : (
-        <Tailwind className="w-4 h-4 inline" />
+        <Icon className="w-4 h-4 inline" />
       )}
     </span>
   )

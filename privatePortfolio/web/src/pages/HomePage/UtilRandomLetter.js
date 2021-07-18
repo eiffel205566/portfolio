@@ -17,19 +17,18 @@ const randomnizeLetters = (func) => {
 }
 
 export const NOTES =
-  'After working many years in finance industry writing scripting programs,' +
-  'automation tools, web crawlers, macros and deeply-nested-hard-to-understand' +
+  'After working many years in finance industry as data analyst and system admin writing scripting programs,' +
+  ' automation tools, web crawlers, macros and deeply-nested-hard-to-understand' +
   '-yet-necessary Excel functions, I finally relinquished every shred of doubt' +
   ' in my mind and decided that I would not work on anything other than programming' +
-  ' and coding, so I taught myself HTML, CSS, Javascript, React, Graphql, Prisma,' +
-  ' Apollo, MangoDB in last year, and now I am web dev...'
+  ' and coding. I taught myself HTML, CSS, Javascript, React, Graphql, Prisma,' +
+  ' Apollo, MangoDB, and now I am a web dev...'
 
 export default randomnizeLetters
 
 export const PROJECTONE =
-  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptas' +
-  'dignissimos numquam, quis facere, recusandae officia minima ullam' +
-  'sapiente a libero atque modi, delectus deleniti fugit animi magni. Magni' +
-  'possimus accusantium quos eos. A sit libero illum eum quod laudantium' +
-  'cumque commodi esse inventore magni. Officiis itaque aperiam debitis' +
-  'voluptatem.'
+  'Expinsight is a full stack web application to help user tracking daily expense ' +
+  'and record income. It is written in React for frontend, Graphql & Prisma for backend,' +
+  ' styled with Tailwind CSS, connected to Postgres database on Railway, and deployed thru Netlify.' +
+  ' The application provides users ability to analyze expense & income ' +
+  'by grouping entries into different types with fully customizable tags in user specified time frame. '

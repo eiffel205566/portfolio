@@ -178,7 +178,6 @@ const HomePage = () => {
       const observerSectionThreeProjectOneRight = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            console.log(entry.isIntersecting)
             setCarouselX((state) => {
               return {
                 ...state,
@@ -282,7 +281,7 @@ const HomePage = () => {
       <section className="sectionTwo bg-overlay relative">
         <SectionHeader text="Myself" color={'gray-300'} />
 
-        <div className="sectionTwoContainer max-w-5xl mx-auto flex flex-col sm:flex-row">
+        <div className="sectionTwoContainer max-w-5xl mx-auto flex flex-col sm:flex-row pb-5 sm:pb-0">
           <SectionTwoLeft visible={carouselX.sectionTwoLeftVisible} />
           <SectionTwoRight
             visible={carouselX.sectionTwoRightVisible}
@@ -298,7 +297,7 @@ const HomePage = () => {
           textColor={'gray-100'}
         />
         <div id={'projectOnePushDown'} className="h-10 w-full"></div>
-        <div className="sectionThreeContainer max-w-5xl mx-auto flex flex-col sm:flex-row overflow-hidden">
+        <div className="sectionThreeContainer max-w-5xl mx-auto flex flex-col sm:flex-row pb-5 sm:pb-0 overflow-hidden">
           <SectionThreeProjectOneLeft
             content={PROJECTONE}
             visible={carouselX.sectionThreeProjectOneLeftVisible}

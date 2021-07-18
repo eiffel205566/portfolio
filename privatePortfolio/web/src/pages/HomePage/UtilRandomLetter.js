@@ -31,4 +31,16 @@ export const PROJECTONE =
   'and record income. It is written in React for frontend, Graphql & Prisma for backend,' +
   ' styled with Tailwind CSS, connected to Postgres database on Railway, and deployed thru Netlify.' +
   ' The application provides users ability to analyze expense & income ' +
-  'by grouping entries into different types with fully customizable tags in user specified time frame. '
+  'by grouping entries into different types with fully customizable tags in user specified time frame. ' +
+  'Hover over picture to see a gif demo.'
+
+export const PROJECTTWO =
+  'ExpenseInsight.com is a web application writing in plain, good O Javascript and Css, ' +
+  'no framework, no libraries, just flex box, grid, and good old document.querySelectorAll. ' +
+  'With help of IndexDB (async browser based database), I was able to "mock" as if there is an' +
+  ' actual database. Again, deployed thru Netlify with repo on Github as always.'
+
+export const PROJECTTHREE =
+  'Personal Portfolio is a simple website written with React and Tailwind to' +
+  ' demonstrate some of my favorite styling techniques like class-based component display, ' +
+  'IntersectionObserver for scroll detection, and usage of svg pictures.'

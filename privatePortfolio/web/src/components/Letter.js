@@ -6,6 +6,9 @@ import {
   Tailwind,
   ReactIcon,
   Netlify,
+  Javascript,
+  Css,
+  Github,
 } from 'src/components/svg'
 const Letter = ({ letter, index, len, direction }) => {
   let ms
@@ -16,6 +19,9 @@ const Letter = ({ letter, index, len, direction }) => {
     tailwind: Tailwind,
     railway: Railway,
     netlify: Netlify,
+    javascript: Javascript,
+    css: Css,
+    github: Github,
   }
   let iconName = typeof letter === 'string' ? null : Object.keys(letter)[0]
   let Icon = iconName ? Icons[iconName] : null
@@ -53,7 +59,7 @@ const Letter = ({ letter, index, len, direction }) => {
       {typeof letter === 'string' ? (
         letter
       ) : (
-        <Icon className="w-4 h-4 inline" />
+        <Icon className="w-5 h-5 inline" />
       )}
     </span>
   )

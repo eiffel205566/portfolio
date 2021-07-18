@@ -279,7 +279,8 @@ body {
 }
 
 .oneRowContainer_visible,
-.sectionThreeProjectOneLeft_visible {
+.sectionThreeProjectOneLeft_visible.sec3,
+.sectionThreeProjectOneLeft_visible.sec5 {
   opacity: 1;
   transform: translateX(0vw);
   visibility: visible;
@@ -316,7 +317,8 @@ body {
 }
 
 .oneRowContainer,
-.sectionThreeProjectOneLeft {
+.sectionThreeProjectOneLeft.sec3,
+.sectionThreeProjectOneLeft.sec5 {
   opacity: 0;
   transform: translateX(-20vw);
   visibility: visible;
@@ -325,7 +327,8 @@ body {
 }
 
 .myIntroSectionTwoRight,
-.sectionThreeProjectOneRight {
+.sectionThreeProjectOneRight,
+.sectionThreeProjectOneLeft.sec4 {
   opacity: 0;
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   transform: translateX(20vw);
@@ -334,9 +337,26 @@ body {
 }
 
 .myIntroSectionTwoRight_visible,
-.sectionThreeProjectOneRight_visible {
+.sectionThreeProjectOneRight_visible,
+.sectionThreeProjectOneLeft_visible.sec4 {
   opacity: 1;
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   transform: translateX(0vw);
   visibility: visible;
+}
+
+.sectionFourLeft {
+  background-image: url('../src/resource/expenseInsight.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+.sectionFiveRight {
+  background-image: url('../src/resource/sectionFive.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
 }

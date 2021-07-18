@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SectionOne = ({ carouselX, setCarouselX }) => {
+const SectionOne = ({ carouselX, setCarouselX, handleFetch }) => {
   return (
     <section className="sectionOneContainer h-screen w-screen -z-10 flex flex-col justify-center">
       <div
@@ -12,6 +12,7 @@ const SectionOne = ({ carouselX, setCarouselX }) => {
               next: state.next === 3 ? 1 : ++state.next,
             }
           })
+          // handleFetch()
         }}
         className="bgUpdateButton select-none h-10 w-48 border rounded-3xl mx-auto hover:text-green-500 z-10 cursor-pointer transform transition-all duration-500"
       >

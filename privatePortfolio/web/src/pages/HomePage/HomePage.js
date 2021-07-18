@@ -4,10 +4,13 @@ import SectionTwoLeft from './SectionTwoLeft'
 import SectionTwoRight from './SectionTwoRight'
 import SectionHeader from './SectionHeader'
 import { NOTES, PROJECTONE } from './UtilRandomLetter'
+import Footer from './Footer'
 
 import { AiOutlineHtml5 } from 'react-icons/ai'
 import SectionThreeProjectOneRight from './SectionThreeProjectOneRight'
 import SectionThreeProjectOneLeft from './SectionThreeProjectOneLeft'
+import SectionFour from './SectionFour'
+import SectionFive from './SectionFive'
 
 const HomePage = () => {
   const [carouselX, setCarouselX] = useState({
@@ -24,8 +27,12 @@ const HomePage = () => {
     sectionTwoLeftVisible: false,
     sectionTwoRightVisible: false,
     animateDemo: false,
+    animateDemoTwo: false,
+    animateDemoThree: false,
     sectionThreeProjectOneRightVisible: false,
     sectionThreeProjectOneLeftVisible: false,
+    sectionFourProjectTwoRightVisible: false,
+    sectionFiveProjectThreeLeftVisible: false,
   })
 
   const randomPick = () => {
@@ -140,6 +147,14 @@ const HomePage = () => {
     'sectionThreeProjectOneLeftPlaceholder'
   )
 
+  const sectionFourProjectTwoRight = document.getElementById(
+    'sectionFourProjectTwoRightPlaceholder'
+  )
+
+  const sectionFiveProjectThreeLeft = document.getElementById(
+    'sectionFiveProjectThreeLeftPlaceholder'
+  )
+
   const landingPageContainer = document.getElementById('landingPageContainer')
   const landingPageContainerRef = useRef(landingPageContainer)
 
@@ -203,11 +218,42 @@ const HomePage = () => {
         { threshold: 0.3 }
       )
 
+      //sectionFourProjectTwoRightPlaceholder
+      const observerSectionFourProjectTwoRight = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            setCarouselX((state) => {
+              return {
+                ...state,
+                sectionFourProjectTwoRightVisible: entry.isIntersecting,
+              }
+            })
+          })
+        },
+        { threshold: 0.3 }
+      )
+
+      const observerSectionFiveProjectThreeLeft = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            setCarouselX((state) => {
+              return {
+                ...state,
+                sectionFiveProjectThreeLeftVisible: entry.isIntersecting,
+              }
+            })
+          })
+        },
+        { threshold: 0.3 }
+      )
+
       //! actually observe things
       observerSectionTwoLeft.observe(sectionTwoLeftContainer)
       observerSectionTwoRight.observe(sectionTwoRightContainer)
       observerSectionThreeProjectOneRight.observe(sectionThreeProjectOneRight)
       observerSectionThreeProjectOneLeft.observe(sectionThreeProjectOneLeft)
+      observerSectionFourProjectTwoRight.observe(sectionFourProjectTwoRight)
+      observerSectionFiveProjectThreeLeft.observe(sectionFiveProjectThreeLeft)
 
       return () => {
         //! clear observer when unmount
@@ -228,6 +274,18 @@ const HomePage = () => {
         if (sectionThreeProjectOneLeft) {
           observerSectionThreeProjectOneLeft.unobserve(
             sectionThreeProjectOneLeft
+          )
+        }
+
+        if (sectionFourProjectTwoRight) {
+          observerSectionFourProjectTwoRight.unobserve(
+            sectionFourProjectTwoRight
+          )
+        }
+
+        if (sectionFiveProjectThreeLeft) {
+          observerSectionFiveProjectThreeLeft.unobserve(
+            sectionFiveProjectThreeLeft
           )
         }
       }
@@ -254,6 +312,20 @@ const HomePage = () => {
     }
   }, [landingPageContainerRef.current])
 
+  /* 
+  Fetch from unsplash 
+  */
+  const handleFetch = async () => {
+    // const data = await fetch(
+    //   `https://api.unsplash.com/search/photos?client_id=${process.env.client_id}&query=nature&orientation=landscape&count=5`
+    // )
+    const data = await fetch(
+      `https://api.unsplash.com/photos/random?client_id=${process.env.client_id}&query=nature&orientation=landscape&count=5`
+    )
+    const json = await data.json()
+    console.log(json)
+  }
+
   return (
     <div
       id="landingPageContainer"
@@ -274,7 +346,11 @@ const HomePage = () => {
         ></div>
       ) : null}
 
-      <SectionOne carouselX={carouselX} setCarouselX={setCarouselX} />
+      <SectionOne
+        carouselX={carouselX}
+        setCarouselX={setCarouselX}
+        handleFetch={handleFetch}
+      />
 
       <div className="pushDownTen w-full h-10 bg-gray-300 bg-opacity-40"></div>
 
@@ -301,6 +377,10 @@ const HomePage = () => {
           <SectionThreeProjectOneLeft
             content={PROJECTONE}
             visible={carouselX.sectionThreeProjectOneLeftVisible}
+            placeholderId={'sectionThreeProjectOneLeftPlaceholder'}
+            title={'ExpInsight - A Full Stack Project'}
+            sectionId={'sectionThreeProjectOneLeft'}
+            animationOrientation={'sec3'}
           />
           <SectionThreeProjectOneRight
             setCarouselX={setCarouselX}
@@ -309,36 +389,12 @@ const HomePage = () => {
         </div>
       </section>
 
-      <Placeholder color="bg-gray-400 z-10" />
-      <Placeholder color="bg-gray-500 z-10" />
-      <Placeholder color="bg-gray-300 z-10" />
-      <Placeholder color="bg-gray-400 z-10" />
-      <Placeholder color="bg-gray-500 z-10" />
-      <Placeholder color="bg-gray-300 z-10" />
-      <Placeholder color="bg-gray-400 z-10" />
-      <Placeholder color="bg-gray-500 z-10" />
-      <Placeholder color="bg-gray-300 z-10" />
-      <Placeholder color="bg-gray-400 z-10" />
-      <Placeholder color="bg-gray-500 z-10" />
-      <Placeholder color="bg-gray-300 z-10" />
-      <Placeholder color="bg-gray-400 z-10" />
-      <Placeholder color="bg-gray-500 z-10" />
-      {/*
-      
-       */}
+      <SectionFour carouselX={carouselX} setCarouselX={setCarouselX} />
+      <SectionFive carouselX={carouselX} setCarouselX={setCarouselX} />
+
+      <Footer />
     </div>
   )
 }
 
 export default HomePage
-
-const Placeholder = ({ color, content, onClick }) => {
-  return (
-    <div
-      onClick={onClick}
-      className={`h-40 ${color} mx-auto text-center w-full`}
-    >
-      {content ? content : 'xxx'}
-    </div>
-  )
-}

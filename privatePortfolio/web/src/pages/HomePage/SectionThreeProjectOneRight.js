@@ -1,4 +1,5 @@
 import { Github, Live } from 'src/components/svg'
+import GroupIcons from './GroupIcons'
 const SectionThreeProjectOneRight = ({ setCarouselX, carouselX }) => {
   return (
     <>
@@ -26,24 +27,12 @@ const SectionThreeProjectOneRight = ({ setCarouselX, carouselX }) => {
           carouselX.animateDemo ? 'Demo' : ''
         } h-102 w-66 border border-transparent mx-auto relative`}
       >
-        {!carouselX.animateDemo || (
+        {carouselX.animateDemo && (
           <div className="sectionThreeProjectOneRightOverlay h-full w-full bg-gray-300 bg-opacity-40 absolute">
-            <div className="h-full flex flex-col justify-center">
-              <div className="mx-auto flex justify-between">
-                <a
-                  href="https://www.expinsight.com/"
-                  className="h-12 w-12 cursor-pointer"
-                >
-                  <Live className="h-full w-full" />
-                </a>
-                <a
-                  href="https://github.com/eiffel205566/redwood"
-                  className="h-12 w-12 cursor-pointer"
-                >
-                  <Github className="h-full w-full" />
-                </a>
-              </div>
-            </div>
+            <GroupIcons
+              liveUrl={'https://www.expinsight.com/'}
+              gitUrl={'https://github.com/eiffel205566/redwood'}
+            />
           </div>
         )}
       </div>

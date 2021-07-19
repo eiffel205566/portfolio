@@ -360,3 +360,8 @@ body {
   background-position-x: center;
   background-position-y: center;
 }
+
+.sectionOneContainer,
+.gray300overlay {
+  height: calc(100vh + 2.5rem) !important;
+}

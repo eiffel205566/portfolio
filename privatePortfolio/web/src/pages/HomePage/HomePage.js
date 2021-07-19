@@ -352,8 +352,6 @@ const HomePage = () => {
         handleFetch={handleFetch}
       />
 
-      <div className="pushDownTen w-full h-10 bg-gray-300 bg-opacity-40"></div>
-
       <section className="sectionTwo bg-overlay relative">
         <SectionHeader text="Myself" color={'gray-300'} />
 

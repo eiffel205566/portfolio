@@ -3,6 +3,38 @@ import React from 'react'
 const SectionOne = ({ carouselX, setCarouselX, handleFetch }) => {
   return (
     <section className="sectionOneContainer h-screen w-screen -z-10 flex flex-col justify-center">
+      <nav
+        className={`navbar${
+          carouselX.showNavbar ? '' : '_top'
+        } h-14 w-full bg-gray-500 bg-opacity-80 fixed top-0 z-30 transform transition-all duration-500 ease-in-out`}
+      >
+        <div className="navbuttonContainer w-48 sm:w-96 h-full mx-auto flex">
+          <a
+            href="#landingPageContainer"
+            className={`text-${
+              carouselX.showNavbar ? 'gray-100' : 'transparent'
+            } text-lg sm:text-2xl hover:text-green-300 love text-center h-full flex flex-col justify-center w-14 mx-auto cursor-pointer`}
+          >
+            <span className="">Home</span>
+          </a>
+          <a
+            href="#sectionTwo"
+            className={`text-${
+              carouselX.showNavbar ? 'gray-100' : 'transparent'
+            } text-lg sm:text-2xl hover:text-green-300 love text-center h-full flex flex-col justify-center w-14 mx-auto cursor-pointer`}
+          >
+            <span className="">Project</span>
+          </a>
+          <a
+            href="#footer"
+            className={`text-${
+              carouselX.showNavbar ? 'gray-100' : 'transparent'
+            } text-lg sm:text-2xl hover:text-green-300 love text-center h-full flex flex-col justify-center w-14 mx-auto cursor-pointer`}
+          >
+            <span className="">Contact</span>
+          </a>
+        </div>
+      </nav>
       <div
         onClick={() => {
           setCarouselX((state) => {

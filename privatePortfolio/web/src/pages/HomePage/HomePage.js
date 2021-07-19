@@ -14,6 +14,7 @@ import SectionFive from './SectionFive'
 
 const HomePage = () => {
   const [carouselX, setCarouselX] = useState({
+    showNavbar: false,
     translateX: 0,
     extended: false,
     current: 1, //1st picture layer
@@ -294,6 +295,23 @@ const HomePage = () => {
 
   // ! useRef of the top level div, and watch its existance with useEffect
   // ! flip loaded to true once it is not null so all other can just watch loaded
+  const watchScroll = function () {
+    if (window.pageYOffset > 100) {
+      setCarouselX((state) => {
+        return {
+          ...state,
+          showNavbar: true,
+        }
+      })
+    } else {
+      setCarouselX((state) => {
+        return {
+          ...state,
+          showNavbar: false,
+        }
+      })
+    }
+  }
   useEffect(() => {
     setCarouselX((state) => {
       return {
@@ -302,6 +320,9 @@ const HomePage = () => {
       }
     })
 
+    //!navbar
+    window.addEventListener('scroll', watchScroll)
+
     return () => {
       setCarouselX((state) => {
         return {
@@ -309,6 +330,7 @@ const HomePage = () => {
           loaded: false,
         }
       })
+      window.removeEventListener('scroll', watchScroll)
     }
   }, [landingPageContainerRef.current])
 
@@ -352,7 +374,7 @@ const HomePage = () => {
         handleFetch={handleFetch}
       />
 
-      <section className="sectionTwo bg-overlay relative">
+      <section id={'sectionTwo'} className="sectionTwo bg-overlay relative">
         <SectionHeader text="Myself" color={'gray-300'} />
 
         <div className="sectionTwoContainer max-w-5xl mx-auto flex flex-col sm:flex-row pb-5 sm:pb-0">

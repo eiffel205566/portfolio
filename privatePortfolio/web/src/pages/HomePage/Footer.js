@@ -4,7 +4,7 @@ import { FcUp } from 'react-icons/fc'
 
 const Footer = () => {
   return (
-    <footer className="h-20 w-full bg-overlay relative">
+    <footer id={'footer'} className="h-20 w-full bg-overlay relative">
       <div
         className={
           'scrollToTop cursor-pointer h-10 w-10 bg-transparent border border-transparent rounded-full absolute top-0 right-1/2 transform -translate-y-1/2 translate-x-1/2'

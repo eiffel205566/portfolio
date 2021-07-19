@@ -370,3 +370,18 @@ body {
   background: transparent;
   transition: 0.5s ease;
 }
+
+nav div a::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: transparent;
+  width: 0px;
+  transition: 0.5s ease;
+  font-weight: bold;
+}
+
+nav div a:hover::after {
+  width: 100%;
+  background: #4aae9b;
+}

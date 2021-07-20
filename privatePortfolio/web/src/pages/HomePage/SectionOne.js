@@ -44,7 +44,6 @@ const SectionOne = ({ carouselX, setCarouselX, handleFetch }) => {
               next: state.next === 3 ? 1 : ++state.next,
             }
           })
-          // handleFetch()
         }}
         className="bgUpdateButton select-none h-10 w-48 border rounded-3xl mx-auto hover:text-green-500 z-10 cursor-pointer transform transition-all duration-500"
       >

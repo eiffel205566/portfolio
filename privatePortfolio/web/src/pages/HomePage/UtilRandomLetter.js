@@ -43,4 +43,5 @@ export const PROJECTTWO =
 export const PROJECTTHREE =
   'Personal Portfolio is a simple website written with React and Tailwind to' +
   ' demonstrate some of my favorite styling techniques like class-based component display, ' +
-  'IntersectionObserver for scroll detection, and usage of svg pictures.'
+  'IntersectionObserver for scroll detection, lazy-loading with custom hook, and usage of svg pictures. ' +
+  'Finally, everytime user refresh page, app will hit Unsplash API and grab 10 new wallpapers!'

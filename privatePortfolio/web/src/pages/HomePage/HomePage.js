@@ -11,6 +11,7 @@ import SectionThreeProjectOneRight from './SectionThreeProjectOneRight'
 import SectionThreeProjectOneLeft from './SectionThreeProjectOneLeft'
 import SectionFour from './SectionFour'
 import SectionFive from './SectionFive'
+import { LazyLoadPic } from 'src/components/LazyLoading'
 
 const HomePage = () => {
   const [carouselX, setCarouselX] = useState({
@@ -19,6 +20,7 @@ const HomePage = () => {
     extended: false,
     current: 1, //1st picture layer
     currentA: 1, //2nd picture layer
+    pictures: null,
     displayedText: ['w', 'e', 'l', 'c', 'o', 'm', 'e'],
     lastLetter: null,
     pickedLetter: [],
@@ -335,18 +337,40 @@ const HomePage = () => {
   }, [landingPageContainerRef.current])
 
   /* 
-  Fetch from unsplash 
+  ! Fetch from unsplash 
   */
-  const handleFetch = async () => {
-    // const data = await fetch(
-    //   `https://api.unsplash.com/search/photos?client_id=${process.env.client_id}&query=nature&orientation=landscape&count=5`
-    // )
+  const handleFetchFromUnsplash = async () => {
     const data = await fetch(
-      `https://api.unsplash.com/photos/random?client_id=${process.env.client_id}&query=nature&orientation=landscape&count=5`
+      `https://api.unsplash.com/photos/random?client_id=${process.env.client_id}&query=nature&orientation=landscape&count=11`
     )
     const json = await data.json()
-    console.log(json)
+    const pictureUrls = json.map((each) => {
+      const {
+        urls: { regular, thumb, ...insideRest },
+        ...rest
+      } = each
+      return { regular, thumb }
+    })
+
+    setCarouselX((state) => {
+      return {
+        ...state,
+        pictures: pictureUrls,
+      }
+    })
   }
+
+  useEffect(() => {
+    handleFetchFromUnsplash()
+    return () => {
+      setCarouselX((state) => {
+        return {
+          ...state,
+          pictures: null,
+        }
+      })
+    }
+  }, [carouselX.loaded])
 
   return (
     <div
@@ -354,32 +378,41 @@ const HomePage = () => {
       ref={landingPageContainerRef}
       className="landingPageContainer min-h-screen w-screen overflow-x-hidden"
     >
-      <div
-        className={`amazingCarousel_${carouselX.current} ${
+      <LazyLoadPic
+        source={
+          carouselX.pictures
+            ? carouselX.pictures[carouselX.current]['regular']
+            : process.env.regularTwo
+        }
+        placeholder={
+          carouselX.pictures
+            ? carouselX.pictures[carouselX.current]['thumb']
+            : process.env.thumbTwo
+        }
+        className={`xamazingCarousel_${carouselX.current} ${
           carouselX.translateX % 2 === 1 ? 'fading' : ''
         } h-screen w-screen fixed -z-10`}
-      ></div>
-      {/* {carouselX.translateX ? (
-        <div
-          className={`amazingCarousel_${carouselX.currentA}a ${
-            carouselX.translateX % 2 === 0 ? 'fading' : ''
-          } h-screen w-screen fixed -z-11`}
-        ></div>
-      ) : null} */}
+      />
 
-      <div
-        className={`amazingCarousel_${carouselX.currentA}a ${
+      <LazyLoadPic
+        source={
+          carouselX.pictures
+            ? carouselX.pictures[carouselX.currentA + 5]['regular']
+            : process.env.regularOne
+        }
+        placeholder={
+          carouselX.pictures
+            ? carouselX.pictures[carouselX.currentA + 5]['thumb']
+            : process.env.thumbOne
+        }
+        className={`xamazingCarousel_${carouselX.currentA}a ${
           carouselX.translateX % 2 === 0 && carouselX.translateX !== 0
             ? 'fading'
             : ''
         } h-screen w-screen fixed -z-11`}
-      ></div>
-
-      <SectionOne
-        carouselX={carouselX}
-        setCarouselX={setCarouselX}
-        handleFetch={handleFetch}
       />
+
+      <SectionOne carouselX={carouselX} setCarouselX={setCarouselX} />
 
       <section id={'sectionTwo'} className="sectionTwo bg-overlay relative">
         <SectionHeader text="Myself" color={'gray-300'} />

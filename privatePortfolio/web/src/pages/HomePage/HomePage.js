@@ -359,14 +359,21 @@ const HomePage = () => {
           carouselX.translateX % 2 === 1 ? 'fading' : ''
         } h-screen w-screen fixed -z-10`}
       ></div>
-
-      {carouselX.translateX ? (
+      {/* {carouselX.translateX ? (
         <div
           className={`amazingCarousel_${carouselX.currentA}a ${
             carouselX.translateX % 2 === 0 ? 'fading' : ''
           } h-screen w-screen fixed -z-11`}
         ></div>
-      ) : null}
+      ) : null} */}
+
+      <div
+        className={`amazingCarousel_${carouselX.currentA}a ${
+          carouselX.translateX % 2 === 0 && carouselX.translateX !== 0
+            ? 'fading'
+            : ''
+        } h-screen w-screen fixed -z-11`}
+      ></div>
 
       <SectionOne
         carouselX={carouselX}
@@ -411,6 +418,10 @@ const HomePage = () => {
 
       <SectionFour carouselX={carouselX} setCarouselX={setCarouselX} />
       <SectionFive carouselX={carouselX} setCarouselX={setCarouselX} />
+
+      <section className="contactSection bg-gray-500 relative">
+        <div className="contactContainer max-w-5xl mx-auto flex flex-col sm:flex-row pb-5 sm:pb-0 overflow-hidden"></div>
+      </section>
 
       <Footer />
     </div>

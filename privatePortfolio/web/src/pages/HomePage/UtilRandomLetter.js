@@ -47,8 +47,12 @@ export const PROJECTTHREE =
   'Finally, everytime user refresh page, app will hit Unsplash API and grab 10 new wallpapers!'
 
 export const placeholderPicUrls = {
-  thumbOne: '1',
-  thumbTwo: '2',
-  regularOne: '1',
-  regularTwo: '2',
+  thumbOne:
+    'https://images.unsplash.com/photo-1448375240586-882707db888b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNDc1OTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjY3NTMyNjY&ixlib=rb-1.2.1&q=80&w=200',
+  thumbTwo:
+    'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNDc1OTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjY3NTMyNjY&ixlib=rb-1.2.1&q=80&w=200',
+  regularOne:
+    'https://images.unsplash.com/photo-1448375240586-882707db888b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNDc1OTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjY3NTMyNjY&ixlib=rb-1.2.1&q=80&w=1080',
+  regularTwo:
+    'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNDc1OTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjY3NTMyNjY&ixlib=rb-1.2.1&q=80&w=1080',
 }

@@ -299,6 +299,7 @@ const HomePage = () => {
   // ! useRef of the top level div, and watch its existance with useEffect
   // ! flip loaded to true once it is not null so all other can just watch loaded
   const watchScroll = function () {
+    console.log(process.env.test)
     if (window.pageYOffset > 100) {
       setCarouselX((state) => {
         return {

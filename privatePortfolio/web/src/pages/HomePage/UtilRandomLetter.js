@@ -44,7 +44,7 @@ export const PROJECTTHREE =
   'Personal Portfolio is a simple website written with React and Tailwind to' +
   ' demonstrate some of my favorite styling techniques like class-based component display, ' +
   'IntersectionObserver for scroll detection, lazy-loading with custom hook, and usage of svg pictures. ' +
-  'Finally, everytime user refresh page, app will hit Unsplash API and grab 10 new wallpapers!'
+  'Finally, everytime user refresh the page, app will hit Unsplash API and grab 10 new wallpapers!'
 
 export const placeholderPicUrls = {
   thumbOne:
@@ -55,5 +55,5 @@ export const placeholderPicUrls = {
     'https://images.unsplash.com/photo-1448375240586-882707db888b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNDc1OTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjY3NTMyNjY&ixlib=rb-1.2.1&q=80&w=1080',
   regularTwo:
     'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNDc1OTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjY3NTMyNjY&ixlib=rb-1.2.1&q=80&w=1080',
-  key: 'ip0uGEjY9rQhmfupiHJo4QYnurAjcWYoC-F8rBTlc-4',
+  key: '',
 }

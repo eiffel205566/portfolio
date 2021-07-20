@@ -342,7 +342,7 @@ const HomePage = () => {
   */
   const handleFetchFromUnsplash = async () => {
     const data = await fetch(
-      `https://api.unsplash.com/photos/random?client_id=${placeholderPicUrls.key}&query=nature&orientation=landscape&count=11`
+      `https://api.unsplash.com/photos/random?client_id=${process.env.CLIENT_ID}&query=nature&orientation=landscape&count=11`
     )
     const json = await data.json()
     const pictureUrls = json.map((each) => {

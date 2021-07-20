@@ -45,3 +45,10 @@ export const PROJECTTHREE =
   ' demonstrate some of my favorite styling techniques like class-based component display, ' +
   'IntersectionObserver for scroll detection, lazy-loading with custom hook, and usage of svg pictures. ' +
   'Finally, everytime user refresh page, app will hit Unsplash API and grab 10 new wallpapers!'
+
+export const placeholderPicUrls = {
+  thumbOne: '1',
+  thumbTwo: '2',
+  regularOne: '1',
+  regularTwo: '2',
+}

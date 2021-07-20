@@ -5,6 +5,7 @@ import SectionTwoRight from './SectionTwoRight'
 import SectionHeader from './SectionHeader'
 import { NOTES, PROJECTONE } from './UtilRandomLetter'
 import Footer from './Footer'
+import { placeholderPicUrls } from './UtilRandomLetter'
 
 import { AiOutlineHtml5 } from 'react-icons/ai'
 import SectionThreeProjectOneRight from './SectionThreeProjectOneRight'
@@ -382,12 +383,12 @@ const HomePage = () => {
         source={
           carouselX.pictures
             ? carouselX.pictures[carouselX.current]['regular']
-            : process.env.regularTwo
+            : placeholderPicUrls.regularTwo
         }
         placeholder={
           carouselX.pictures
             ? carouselX.pictures[carouselX.current]['thumb']
-            : process.env.thumbTwo
+            : placeholderPicUrls.thumbTwo
         }
         className={`xamazingCarousel_${carouselX.current} ${
           carouselX.translateX % 2 === 1 ? 'fading' : ''
@@ -398,12 +399,12 @@ const HomePage = () => {
         source={
           carouselX.pictures
             ? carouselX.pictures[carouselX.currentA + 5]['regular']
-            : process.env.regularOne
+            : placeholderPicUrls.regularOne
         }
         placeholder={
           carouselX.pictures
             ? carouselX.pictures[carouselX.currentA + 5]['thumb']
-            : process.env.thumbOne
+            : placeholderPicUrls.thumbOne
         }
         className={`xamazingCarousel_${carouselX.currentA}a ${
           carouselX.translateX % 2 === 0 && carouselX.translateX !== 0

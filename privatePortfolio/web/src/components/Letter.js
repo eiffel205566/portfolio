@@ -10,7 +10,14 @@ import {
   Css,
   Github,
 } from 'src/components/svg'
-const Letter = ({ letter, index, len, direction }) => {
+const Letter = ({
+  letter,
+  index,
+  len,
+  direction,
+  forwardSpeed = 20,
+  backwardSpeed = 10,
+}) => {
   let ms
   let style
   const Icons = {
@@ -28,7 +35,7 @@ const Letter = ({ letter, index, len, direction }) => {
 
   if (Object.is(undefined, direction) || direction === 'forward') {
     //forward
-    ms = index * 20 + 'ms'
+    ms = index * forwardSpeed + 'ms'
     style = {
       opacity: '0',
       animationName: 'letterOpacity',
@@ -41,7 +48,7 @@ const Letter = ({ letter, index, len, direction }) => {
     }
   } else {
     //backwards
-    ms = (len - index) * 10 + 'ms'
+    ms = (len - index) * backwardSpeed + 'ms'
     style = {
       opacity: '1',
       animationName: 'letterOpacityBack',

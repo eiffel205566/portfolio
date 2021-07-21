@@ -3,9 +3,9 @@ import SectionOne from './SectionOne'
 import SectionTwoLeft from './SectionTwoLeft'
 import SectionTwoRight from './SectionTwoRight'
 import SectionHeader from './SectionHeader'
-import { NOTES, PROJECTONE } from './UtilRandomLetter'
+import { NOTES, PROJECTONE, typingMessage } from './UtilRandomLetter'
 import Footer from './Footer'
-import { placeholderPicUrls } from './UtilRandomLetter'
+import { placeholderPicUrls, typingMessages } from './UtilRandomLetter'
 
 import { AiOutlineHtml5 } from 'react-icons/ai'
 import SectionThreeProjectOneRight from './SectionThreeProjectOneRight'
@@ -22,11 +22,14 @@ const HomePage = () => {
     current: 1, //1st picture layer
     currentA: 1, //2nd picture layer
     pictures: null,
-    displayedText: ['w', 'e', 'l', 'c', 'o', 'm', 'e'],
+    displayedText: 'I am Sean Yang',
+    displayedTextPick: 0,
+    displayedTextOrientation: 'forward',
     lastLetter: null,
     pickedLetter: [],
     randomnizationCount: 0,
     timeId: null,
+    typingTimeId: null,
     loaded: false,
     sectionTwoLeftVisible: false,
     sectionTwoRightVisible: false,
@@ -65,17 +68,6 @@ const HomePage = () => {
   }, [carouselX.translateX])
 
   //* Mocking typing effect && constant
-  const letters = 'celwmon'
-  const allLetters = [...letters.split('')]
-  const correctLetters = {
-    0: 'w',
-    1: 'e',
-    2: 'l',
-    3: 'c',
-    4: 'o',
-    5: 'm',
-    6: 'e',
-  }
 
   /*
   * Mocking random typing effect
@@ -84,56 +76,53 @@ const HomePage = () => {
   {0: 'w', 1: 'e', 2: 'l', 3:'c', 4:'o', 5: 'm', 6: 'e'}
   //! [...arr.slice(0, n),'x' ,...arr.slice(n+1 , arr.length)] where n is index
   */
-  useEffect(() => {
-    if (carouselX.randomnizationCount > 6) {
-      return () => {
-        clearTimeout(carouselX.timeId)
-        setCarouselX((state) => {
-          return {
-            ...state,
-            pickedLetter: [],
-          }
-        })
-      }
-    } else {
-      if (
-        correctLetters[carouselX.randomnizationCount] ===
-        carouselX.displayedText[carouselX.randomnizationCount]
-      ) {
-        setCarouselX((state) => {
-          return {
-            ...state,
-            randomnizationCount: ++state.randomnizationCount,
-            pickedLetter: [],
-          }
-        })
-      }
-    }
-
-    setTimeout(() => {
+  const typingMessage = () => {
+    let timeId = setTimeout(() => {
       setCarouselX((state) => {
-        let randomPick =
-          allLetters[Math.floor(Math.random() * allLetters.length)]
-        while (state.pickedLetter.includes(randomPick)) {
-          randomPick = allLetters[Math.floor(Math.random() * allLetters.length)]
-        }
-
         return {
           ...state,
-          displayedText: [
-            ...state.displayedText.slice(0, state.randomnizationCount),
-            randomPick,
-            ...state.displayedText.slice(
-              state.randomnizationCount + 1,
-              state.displayedText.length
-            ),
-          ],
-          lastLetter: randomPick,
-          pickedLetter: [...state.pickedLetter, randomPick],
+          displayedTextOrientation: 'backward',
+          typingTimeId: timeId,
         }
       })
-    }, 100)
-  }, [carouselX.displayedText])
+      timeId = setTimeout(() => {
+        setCarouselX((state) => {
+          const next =
+            state.displayedTextPick === 2 ? 0 : ++state.displayedTextPick
+          return {
+            ...state,
+            displayedTextOrientation: 'forward',
+            displayedTextPick: next,
+            displayedText: typingMessages[next],
+            typingTimeId: timeId,
+          }
+        })
+      }, 2000)
+      timeId = setTimeout(typingMessage, 2000)
+      setCarouselX((state) => {
+        return {
+          ...state,
+          typingTimeId: timeId,
+        }
+      })
+    }, 4000)
+  }
+
+  useEffect(() => {
+    typingMessage()
+
+    return () => {
+      clearTimeout(carouselX.typingTimeId)
+      setCarouselX((state) => {
+        return {
+          ...state,
+          typingTimeId: null,
+          displayedTextPick: 0,
+          displayedTextOrientation: 'forward',
+        }
+      })
+    }
+  }, [carouselX.loaded])
 
   //! handling viewport visibility check with  IntersectionObserver
   const sectionTwoLeftContainer = document.getElementById(
@@ -341,24 +330,33 @@ const HomePage = () => {
   ! Fetch from unsplash 
   */
   const handleFetchFromUnsplash = async () => {
-    const data = await fetch(
-      `https://api.unsplash.com/photos/random?client_id=${placeholderPicUrls.key}&query=nature&orientation=landscape&count=11`
-    )
-    const json = await data.json()
-    const pictureUrls = json.map((each) => {
-      const {
-        urls: { regular, thumb, ...insideRest },
-        ...rest
-      } = each
-      return { regular, thumb }
-    })
+    try {
+      const data = await fetch(
+        `https://api.unsplash.com/photos/random?client_id=${placeholderPicUrls.key}&query=nature&orientation=landscape&count=11`
+      )
+      const json = await data.json()
+      const pictureUrls = json.map((each) => {
+        const {
+          urls: { regular, thumb, ...insideRest },
+          ...rest
+        } = each
+        return { regular, thumb }
+      })
 
-    setCarouselX((state) => {
-      return {
-        ...state,
-        pictures: pictureUrls,
-      }
-    })
+      setCarouselX((state) => {
+        return {
+          ...state,
+          pictures: pictureUrls,
+        }
+      })
+    } catch (error) {
+      setCarouselX((state) => {
+        return {
+          ...state,
+          pictures: null,
+        }
+      })
+    }
   }
 
   useEffect(() => {

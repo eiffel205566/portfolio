@@ -57,3 +57,9 @@ export const placeholderPicUrls = {
     'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNDc1OTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjY3NTMyNjY&ixlib=rb-1.2.1&q=80&w=1080',
   key: 'ip0uGEjY9rQhmfupiHJo4QYnurAjcWYoC-F8rBTlc-4',
 }
+
+export const typingMessages = [
+  'I am Sean Yang',
+  'I am Data Analyst',
+  'I am Web Dev',
+]

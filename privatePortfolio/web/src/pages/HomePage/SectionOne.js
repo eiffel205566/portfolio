@@ -1,6 +1,11 @@
-import React from 'react'
+import Letter from 'src/components/Letter'
+import { v4 as uuidv4 } from 'uuid'
 
-const SectionOne = ({ carouselX, setCarouselX, handleFetch }) => {
+const SectionOne = ({ carouselX, setCarouselX }) => {
+  const message = carouselX.displayedText
+    ? Array.from(carouselX.displayedText)
+    : null
+
   return (
     <section className="sectionOneContainer h-screen w-screen -z-10 flex flex-col justify-center">
       <nav
@@ -53,14 +58,30 @@ const SectionOne = ({ carouselX, setCarouselX, handleFetch }) => {
       </div>
       <div className="gray300overlay text-center h-full w-full bg-gray-300 bg-opacity-40 absolute top-0 left-0 -z-5">
         <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center">
-          <div className="welcomeMessage love text-7xl flex justify-center">
-            {carouselX.displayedText.map((letter, index) => {
+          <div className="welcomeMessage love text-4xl sm:text-6xl flex justify-center">
+            Welcome To My Site
+            {/* {carouselX.displayedText.map((letter, index) => {
               if (index > 6) {
                 return null
               } else {
                 return <span key={index}>{letter}</span>
               }
-            })}
+            })} */}
+          </div>
+          <div className="text-3xl sm:text-5xl love">
+            {message
+              ? message.map((letter, index, arr) => (
+                  <Letter
+                    // key={uuidv4() + index}
+                    key={index}
+                    index={index}
+                    letter={letter}
+                    len={arr.length}
+                    forwardSpeed={100}
+                    direction={carouselX.displayedTextOrientation}
+                  />
+                ))
+              : 'I am Sean'}
           </div>
         </div>
       </div>

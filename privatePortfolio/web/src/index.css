@@ -385,3 +385,24 @@ nav div a:hover::after {
   width: 100%;
   background: #4aae9b;
 }
+
+.footerIconContainer:hover .footerIcon {
+  transition: all;
+  transition-duration: 300ms;
+  transform: translateY(5rem);
+}
+
+.footerIconContainer:hover .footerIcon2 {
+  transition: all;
+  transition-duration: 300ms;
+  transform: translateY(0rem);
+}
+
+.footerIconContainer .footerIcon,
+.footerIconContainer .footerIcon2 {
+  transition: none;
+}
+
+.footerIconContainer .footerIcon2 {
+  transform: translateY(-5rem);
+}

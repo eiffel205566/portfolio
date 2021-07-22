@@ -1,5 +1,6 @@
 import Letter from 'src/components/Letter'
 import { v4 as uuidv4 } from 'uuid'
+import { ThumbnailCarousel } from './ThumbnailCarousel'
 
 const SectionOne = ({ carouselX, setCarouselX }) => {
   const message = carouselX.displayedText
@@ -40,54 +41,53 @@ const SectionOne = ({ carouselX, setCarouselX }) => {
           </a>
         </div>
       </nav>
-      <div
-        onClick={() => {
-          setCarouselX((state) => {
-            return {
-              ...state,
-              translateX: ++state.translateX,
-              next: state.next === 3 ? 1 : ++state.next,
-            }
-          })
-        }}
-        className="bgUpdateButton select-none h-10 w-48 border rounded-3xl mx-auto hover:text-green-500 z-10 cursor-pointer transform transition-all duration-500"
-      >
-        <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center z-10">
-          <span className="love text-xl z-10 text-center">New Wallpaper</span>
+      <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center w-full">
+        <div className="welcomeMessage love text-4xl sm:text-6xl flex justify-center">
+          Welcome To My Site
         </div>
-      </div>
-      <div className="gray300overlay text-center h-full w-full bg-gray-300 bg-opacity-40 absolute top-0 left-0 -z-5">
-        <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center">
-          <div className="welcomeMessage love text-4xl sm:text-6xl flex justify-center">
-            Welcome To My Site
-            {/* {carouselX.displayedText.map((letter, index) => {
-              if (index > 6) {
-                return null
-              } else {
-                return <span key={index}>{letter}</span>
+        <div className="text-3xl sm:text-5xl love mx-auto">
+          {message
+            ? message.map((letter, index, arr) => (
+                <Letter
+                  key={index}
+                  index={index}
+                  letter={letter}
+                  len={arr.length}
+                  forwardSpeed={100}
+                  direction={carouselX.displayedTextOrientation}
+                  additionalStyle={
+                    (carouselX.displayedTextPick === 0 ||
+                      carouselX.displayedTextPick === 2) &&
+                    (letter === 'S' ||
+                      letter === 'Y' ||
+                      letter === 'W' ||
+                      letter === 'D')
+                      ? true
+                      : false
+                  }
+                />
+              ))
+            : 'I am Sean'}
+        </div>
+        <div
+          onClick={() => {
+            setCarouselX((state) => {
+              return {
+                ...state,
+                translateX: ++state.translateX,
+                next: state.next === 3 ? 1 : ++state.next,
               }
-            })} */}
-          </div>
-          <div className="text-3xl sm:text-5xl love">
-            {message
-              ? message.map((letter, index, arr) => (
-                  <Letter
-                    // key={uuidv4() + index}
-                    key={index}
-                    index={index}
-                    letter={letter}
-                    len={arr.length}
-                    forwardSpeed={100}
-                    direction={carouselX.displayedTextOrientation}
-                  />
-                ))
-              : 'I am Sean'}
+            })
+          }}
+          className="bgUpdateButtons my-2 select-none h-10 w-48 border rounded-3xl mx-auto hover:text-green-500 z-10 cursor-pointer transform transition-all duration-500"
+        >
+          <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center z-10">
+            <span className="love text-xl z-10 text-center">New Wallpaper</span>
           </div>
         </div>
+        {/* <ThumbnailCarousel /> */}
       </div>
-      {/*
-  
-   */}
+      <div className="gray300overlay text-center h-full w-full bg-gray-300 bg-opacity-40 absolute top-0 left-0 -z-5"></div>
     </section>
   )
 }

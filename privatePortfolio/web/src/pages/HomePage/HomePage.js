@@ -109,7 +109,7 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    typingMessage()
+    typingMessage(setCarouselX)
 
     return () => {
       clearTimeout(carouselX.typingTimeId)
@@ -377,21 +377,32 @@ const HomePage = () => {
       ref={landingPageContainerRef}
       className="landingPageContainer min-h-screen w-screen overflow-x-hidden"
     >
-      <LazyLoadPic
-        source={
-          carouselX.pictures
-            ? carouselX.pictures[carouselX.current]['regular']
-            : placeholderPicUrls.regularTwo
-        }
-        placeholder={
-          carouselX.pictures
-            ? carouselX.pictures[carouselX.current]['thumb']
-            : placeholderPicUrls.thumbTwo
-        }
-        className={`xamazingCarousel_${carouselX.current} ${
-          carouselX.translateX % 2 === 1 ? 'fading' : ''
-        } h-screen w-screen fixed -z-10`}
-      />
+      {/* adding a fix LazyLoadPic component to avoid jumping onMount because async fetch */}
+      {carouselX.translateX < 2 ? (
+        <LazyLoadPic
+          source={placeholderPicUrls.regularTwo}
+          placeholder={placeholderPicUrls.thumbTwo}
+          className={`xamazingCarousel_${carouselX.current} ${
+            carouselX.translateX % 2 === 1 ? 'fading' : ''
+          } h-screen w-screen fixed -z-10`}
+        />
+      ) : (
+        <LazyLoadPic
+          source={
+            carouselX.pictures
+              ? carouselX.pictures[carouselX.current]['regular']
+              : placeholderPicUrls.regularTwo
+          }
+          placeholder={
+            carouselX.pictures
+              ? carouselX.pictures[carouselX.current]['thumb']
+              : placeholderPicUrls.thumbTwo
+          }
+          className={`xamazingCarousel_${carouselX.current} ${
+            carouselX.translateX % 2 === 1 ? 'fading' : ''
+          } h-screen w-screen fixed -z-10`}
+        />
+      )}
 
       <LazyLoadPic
         source={

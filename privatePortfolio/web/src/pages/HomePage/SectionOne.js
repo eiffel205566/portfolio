@@ -79,13 +79,18 @@ const SectionOne = ({ carouselX, setCarouselX }) => {
               }
             })
           }}
-          className="bgUpdateButtons my-2 select-none h-10 w-48 border rounded-3xl mx-auto hover:text-green-500 z-10 cursor-pointer transform transition-all duration-500"
+          className="bgUpdateButtons relative my-2 select-none h-10 w-48 border rounded-3xl mx-auto hover:text-green-500 z-10 cursor-pointer transform transition-all duration-500"
         >
-          <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center z-10">
+          {/* <div className="absolute -right-10 top-1/2">
+            <div
+              className={`burgerline ${carouselX.burgerState ? 'open' : ''}`}
+            ></div>
+          </div> */}
+          <div className="horizontalJustifyCenterWrapper  h-full flex flex-col justify-center z-10 relative">
             <span className="love text-xl z-10 text-center">New Wallpaper</span>
           </div>
         </div>
-        {/* <ThumbnailCarousel /> */}
+        <ThumbnailCarousel carouselX={carouselX} />
       </div>
       <div className="gray300overlay text-center h-full w-full bg-gray-300 bg-opacity-40 absolute top-0 left-0 -z-5"></div>
     </section>

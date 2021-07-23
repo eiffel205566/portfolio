@@ -5,7 +5,11 @@ import SectionTwoRight from './SectionTwoRight'
 import SectionHeader from './SectionHeader'
 import { NOTES, PROJECTONE, typingMessage } from './UtilRandomLetter'
 import Footer from './Footer'
-import { placeholderPicUrls, typingMessages } from './UtilRandomLetter'
+import {
+  placeholderPicUrls,
+  typingMessages,
+  mockPictureUrl,
+} from './UtilRandomLetter'
 
 import { AiOutlineHtml5 } from 'react-icons/ai'
 import SectionThreeProjectOneRight from './SectionThreeProjectOneRight'
@@ -17,11 +21,12 @@ import { LazyLoadPic } from 'src/components/LazyLoading'
 const HomePage = () => {
   const [carouselX, setCarouselX] = useState({
     showNavbar: false,
+    burgerState: false,
     translateX: 0,
     extended: false,
     current: 1, //1st picture layer
     currentA: 1, //2nd picture layer
-    pictures: null,
+    pictures: mockPictureUrl, //null,
     displayedText: 'I am Sean Yang',
     displayedTextPick: 0,
     displayedTextOrientation: 'forward',
@@ -48,6 +53,7 @@ const HomePage = () => {
   }
 
   useEffect(() => {
+    //first layer
     if (carouselX.translateX % 2 === 1) return
     setCarouselX((state) => {
       return {
@@ -58,6 +64,7 @@ const HomePage = () => {
   }, [carouselX.translateX])
 
   useEffect(() => {
+    //2nd layer
     if (carouselX.translateX % 2 === 0) return
     setCarouselX((state) => {
       return {
@@ -359,6 +366,7 @@ const HomePage = () => {
     }
   }
 
+  //! async fetch from unsplpash
   useEffect(() => {
     handleFetchFromUnsplash()
     return () => {

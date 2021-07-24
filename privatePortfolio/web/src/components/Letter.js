@@ -18,6 +18,7 @@ const Letter = ({
   forwardSpeed = 20,
   backwardSpeed = 10,
   additionalStyle = false,
+  additionalStyleColor = '',
 }) => {
   let ms
   let style
@@ -33,10 +34,13 @@ const Letter = ({
   }
   let iconName = typeof letter === 'string' ? null : Object.keys(letter)[0]
   let Icon = iconName ? Icons[iconName] : null
+  let background = additionalStyleColor
+    ? `-webkit-linear-gradient(right, ${additionalStyleColor})`
+    : '-webkit-linear-gradient(right, #3f87a6, #ebf8e1, #f69d3c)'
 
   const moreStyle = additionalStyle
     ? {
-        background: '-webkit-linear-gradient(right, #3f87a6, #ebf8e1, #f69d3c)',
+        background,
         backgroundClip: 'text',
         WebkitBackgroundClip: 'text',
         color: 'transparent',

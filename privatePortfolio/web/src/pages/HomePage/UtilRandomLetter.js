@@ -68,6 +68,8 @@ export const typingMessages = [
   'I am a Web Dev',
 ]
 
+export const welcomeMessage = 'Welcome!'
+
 export const mockPictureUrl = [
   {
     regular:

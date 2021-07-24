@@ -1,6 +1,7 @@
 import Letter from 'src/components/Letter'
 import { v4 as uuidv4 } from 'uuid'
 import { ThumbnailCarousel } from './ThumbnailCarousel'
+import { welcomeMessage } from './UtilRandomLetter'
 
 const SectionOne = ({ carouselX, setCarouselX }) => {
   const message = carouselX.displayedText
@@ -42,19 +43,19 @@ const SectionOne = ({ carouselX, setCarouselX }) => {
         </div>
       </nav>
       <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center w-full">
-        <div
-          style={{
-            background:
-              '-webkit-linear-gradient(right, #3f87a6, #ebf8e1, #f69d3c)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            color: 'transparent',
-          }}
-          className="welcomeMessage love text-4xl sm:text-6xl flex justify-center"
-        >
-          Welcome To My Site
+        <div className="welcomeMessage love text-4xl sm:text-6xl flex justify-center select-none">
+          {Array.from(welcomeMessage).map((letter, index, arr) => (
+            <Letter
+              key={index}
+              index={index}
+              letter={letter}
+              len={welcomeMessage.length}
+              forwardSpeed={100}
+              additionalStyle={true}
+            />
+          ))}
         </div>
-        <div className="text-3xl sm:text-5xl love mx-auto">
+        <div className="text-3xl sm:text-5xl love mx-auto select-none">
           {message
             ? message.map((letter, index, arr) => (
                 <Letter

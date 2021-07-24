@@ -414,7 +414,7 @@ nav div a:hover::after {
   position: relative;
   top: 0%;
   width: 30px;
-  background: #fff;
+  background: #10b981;
   margin: auto;
   height: 2px;
   transition: 1s ease;
@@ -428,7 +428,7 @@ nav div a:hover::after {
   width: 30px;
   height: 2px;
   margin: auto;
-  background: #fff;
+  background: #10b981;
   top: 10px;
   left: 0px;
   transition: 0.5s ease;
@@ -441,7 +441,7 @@ nav div a:hover::after {
   width: 30px;
   height: 2px;
   margin: auto;
-  background: #fff;
+  background: #10b981;
   top: -12px;
   left: 0px;
   transition: 0.5s ease;
@@ -454,8 +454,10 @@ nav div a:hover::after {
 
 .burgerline.open::before {
   transform: translateY(-10px) rotate(45deg);
+  background: #ef4444;
 }
 
 .burgerline.open::after {
   transform: translateY(10px) rotate(-45deg);
+  background: #ef4444;
 }

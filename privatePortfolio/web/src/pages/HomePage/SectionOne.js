@@ -42,7 +42,16 @@ const SectionOne = ({ carouselX, setCarouselX }) => {
         </div>
       </nav>
       <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center w-full">
-        <div className="welcomeMessage love text-4xl sm:text-6xl flex justify-center">
+        <div
+          style={{
+            background:
+              '-webkit-linear-gradient(right, #3f87a6, #ebf8e1, #f69d3c)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent',
+          }}
+          className="welcomeMessage love text-4xl sm:text-6xl flex justify-center"
+        >
           Welcome To My Site
         </div>
         <div className="text-3xl sm:text-5xl love mx-auto">
@@ -56,12 +65,11 @@ const SectionOne = ({ carouselX, setCarouselX }) => {
                   forwardSpeed={100}
                   direction={carouselX.displayedTextOrientation}
                   additionalStyle={
-                    (carouselX.displayedTextPick === 0 ||
-                      carouselX.displayedTextPick === 2) &&
-                    (letter === 'S' ||
-                      letter === 'Y' ||
-                      letter === 'W' ||
-                      letter === 'D')
+                    letter === 'S' ||
+                    letter === 'Y' ||
+                    letter === 'W' ||
+                    letter === 'D' ||
+                    letter === 'P'
                       ? true
                       : false
                   }
@@ -79,22 +87,41 @@ const SectionOne = ({ carouselX, setCarouselX }) => {
               }
             })
           }}
-          className="bgUpdateButtons relative my-2 select-none h-10 w-48 border rounded-3xl mx-auto hover:text-green-500 z-10 cursor-pointer transform transition-all duration-500"
+          className="bgUpdateButtons relative my-2 select-none h-10 w-48 border rounded-3xl mx-auto z-10"
         >
-          {/* <div className="absolute -right-10 top-1/2">
-            <div
-              className={`burgerline ${carouselX.burgerState ? 'open' : ''}`}
-            ></div>
-          </div> */}
-          <div className="horizontalJustifyCenterWrapper  h-full flex flex-col justify-center z-10 relative">
+          <div className="horizontalJustifyCenterWrapper h-full flex flex-col justify-center z-10 relative cursor-pointer transform transition-all duration-500 hover:text-green-500">
             <span className="love text-xl z-10 text-center">New Wallpaper</span>
           </div>
+          <Burger carouselX={carouselX} setCarouselX={setCarouselX} />
         </div>
         <ThumbnailCarousel carouselX={carouselX} />
       </div>
-      <div className="gray300overlay text-center h-full w-full bg-gray-300 bg-opacity-40 absolute top-0 left-0 -z-5"></div>
+      <div className="gray300overlay text-center h-full w-full bg-gray-500 bg-opacity-40 absolute top-0 left-0 -z-5"></div>
     </section>
   )
 }
 
 export default SectionOne
+
+const Burger = ({ carouselX, setCarouselX }) => {
+  return (
+    <div
+      onClick={(e) => {
+        e.stopPropagation()
+        setCarouselX((state) => {
+          return {
+            ...state,
+            burgerState: !state.burgerState,
+          }
+        })
+      }}
+      className="absolute burgerContainer h-10 w-10 top-0 -right-10 cursor-pointer"
+    >
+      <div className="transform transition-all h-full translate-y-1/2">
+        <div
+          className={`burgerline ${carouselX.burgerState ? 'open' : ''}`}
+        ></div>
+      </div>
+    </div>
+  )
+}

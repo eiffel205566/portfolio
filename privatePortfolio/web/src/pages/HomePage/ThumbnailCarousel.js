@@ -8,8 +8,15 @@ export const ThumbnailCarousel = ({ carouselX }) => {
 
   //carouselX.pictures ?
   //when caorusel.pictures is null (fetching fail from unsplash) : carouselX.translateX % 2 === 1 ? 1 : 0
+  //default thumbnail when carouselX === 0 is always placeholderPicUlrs.thumbTwo
   const thumbNails = carouselX.pictures
-    ? carouselX.pictures.map((urlGroup) => urlGroup['thumb'])
+    ? carouselX.pictures.map((urlGroup, index) => {
+        if (index === 0) {
+          return placeholderPicUrls.thumbTwo
+        } else {
+          return urlGroup['thumb']
+        }
+      })
     : placeHolderThumbNails
 
   const pictureIndex = carouselX.pictures //did fetch success
@@ -21,7 +28,11 @@ export const ThumbnailCarousel = ({ carouselX }) => {
     : 0
 
   return (
-    <div className="w-63 overflow-x-hidden mx-auto relative">
+    <div
+      className={`thumbnailCarouselContainer w-63 overflow-x-hidden mx-auto relative transform transition-all duration-500 ${
+        carouselX.burgerState ? '' : 'translate-y-20 opacity-0'
+      }`}
+    >
       <div
         style={{
           backgroundImage:
@@ -38,9 +49,11 @@ export const ThumbnailCarousel = ({ carouselX }) => {
       ></div>
 
       <div
-        className={`thumbNailCarousel w-231 mx-auto h-20 z-30 flex transform transition-all duration-500 -translate-x-${
-          pictureIndex - 1
-        }/11`}
+        className={`thumbNailCarousel w-231 mx-auto h-20 z-30 flex transform transition-all duration-500 ${
+          carouselX.translateX
+            ? `-translate-x-${pictureIndex - 1}/11`
+            : 'translate-x-1/11'
+        } `}
       >
         {thumbNails.map((thumbUrl, index) => (
           <div

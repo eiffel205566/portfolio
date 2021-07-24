@@ -36,8 +36,7 @@ const Letter = ({
 
   const moreStyle = additionalStyle
     ? {
-        backgroundImage:
-          'url(https://images.unsplash.com/photo-1557683316-973673baf926?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)',
+        background: '-webkit-linear-gradient(right, #3f87a6, #ebf8e1, #f69d3c)',
         backgroundClip: 'text',
         WebkitBackgroundClip: 'text',
         color: 'transparent',

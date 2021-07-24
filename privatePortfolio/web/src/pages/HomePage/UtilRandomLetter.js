@@ -64,7 +64,7 @@ export const placeholderPicUrls = {
 
 export const typingMessages = [
   'I am Sean Yang',
-  'I am a Data Analyst',
+  'I like to Write Website',
   'I am a Web Dev',
 ]
 
@@ -73,7 +73,7 @@ export const mockPictureUrl = [
     regular:
       'https://images.unsplash.com/photo-1466354424719-343280fe118b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNDc1OTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjcwMDQ2MTk&ixlib=rb-1.2.1&q=80&w=1080',
     thumb:
-      'https://images.unsplash.com/photo-1466354424719-343280fe118b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNDc1OTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjcwMDQ2MTk&ixlib=rb-1.2.1&q=80&w=200',
+      'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNDc1OTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjY3NTMyNjY&ixlib=rb-1.2.1&q=80&w=200',
   },
   {
     regular:

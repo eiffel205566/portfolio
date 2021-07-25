@@ -49,7 +49,7 @@ const SectionTwoLeft = ({ visible }) => {
         text="Sean, Web Dev"
         spinState={spinState}
         onMouseEnter={() => {
-          onMouseEnter('#1')
+          // onMouseEnter('#1')
         }}
         onMouseLeave={onMouseLeave}
         visible={visible}
@@ -60,7 +60,7 @@ const SectionTwoLeft = ({ visible }) => {
         iconClassNames={'h-14 w-14'}
         text={'html5'}
         spinState={spinState}
-        setSpinState={setSpinState}
+        setSpinState={() => {}}
         identifier={'#0'}
         visible={visible}
       />
@@ -70,7 +70,7 @@ const SectionTwoLeft = ({ visible }) => {
         iconClassNames={'h-14 w-14'}
         text={'ES6+, Python3'}
         spinState={spinState}
-        setSpinState={setSpinState}
+        setSpinState={() => {}}
         identifier={'#2'}
         visible={visible}
       />
@@ -79,7 +79,7 @@ const SectionTwoLeft = ({ visible }) => {
         iconClassNames={'h-14 w-14'}
         text={'CSS3, SASS, Tailwind'}
         spinState={spinState}
-        setSpinState={setSpinState}
+        setSpinState={() => {}}
         identifier={'#3'}
         visible={visible}
       />
@@ -88,7 +88,7 @@ const SectionTwoLeft = ({ visible }) => {
         iconClassNames={'h-14 w-14'}
         text={'Mongo, Graphql'}
         spinState={spinState}
-        setSpinState={setSpinState}
+        setSpinState={() => {}}
         identifier={'#4'}
         visible={visible}
       />
@@ -97,7 +97,7 @@ const SectionTwoLeft = ({ visible }) => {
         iconClassNames={'h-14 w-14'}
         text={'ReactJS'}
         spinState={spinState}
-        setSpinState={setSpinState}
+        setSpinState={() => {}}
         identifier={'#5'}
         visible={visible}
       />
@@ -106,7 +106,7 @@ const SectionTwoLeft = ({ visible }) => {
         iconClassNames={'h-14 w-14'}
         text={'Github'}
         spinState={spinState}
-        setSpinState={setSpinState}
+        setSpinState={() => {}}
         identifier={'#6'}
         visible={visible}
       />
@@ -153,6 +153,7 @@ const SectionTwoLeftOneRowComponent = ({
                   : ''
               }`}
               onMouseEnter={(e) => {
+                e.preventDefault()
                 setSpinState((state) => {
                   return {
                     ...state,
@@ -165,7 +166,7 @@ const SectionTwoLeftOneRowComponent = ({
             >
               <Icon
                 identifier={`${identifier}_${index}`}
-                className={`${iconClassNames} ${
+                className={`sectionTwoLeftOneIcon ${iconClassNames} ${
                   spinState.spinning &&
                   `${identifier}_${index}` === spinState.target
                     ? 'spinning'

@@ -172,13 +172,6 @@ body {
   background-position-y: center;
 }
 
-.startDust {
-  background-image: url('./resource/starDust.gif');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: center;
-  background-position-y: center;
-}
 /** --- */
 
 /* *amazinCarousel Gropu 4 */
@@ -460,4 +453,19 @@ nav div a:hover::after {
 .burgerline.open::after {
   transform: translateY(10px) rotate(-45deg);
   background: #ef4444;
+}
+
+.myHeadLiterally:hover,
+.sectionTwoLeftOneIcon:hover {
+  transition: all 0.6s;
+  animation: spinning 1s infinite;
+}
+
+.iconContainer:hover .startDust,
+.iconContainer:hover .startDustx {
+  background-image: url('./resource/starDust.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
 }

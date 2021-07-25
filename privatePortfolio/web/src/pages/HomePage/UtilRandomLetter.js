@@ -64,7 +64,7 @@ export const placeholderPicUrls = {
 
 export const typingMessages = [
   'I am Sean Yang',
-  'I like to Write Website',
+  'I like to Write Websites',
   'I am a Web Dev',
 ]
 

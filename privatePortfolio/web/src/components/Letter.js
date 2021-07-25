@@ -19,6 +19,7 @@ const Letter = ({
   backwardSpeed = 10,
   additionalStyle = false,
   additionalStyleColor = '',
+  animationName,
 }) => {
   let ms
   let style

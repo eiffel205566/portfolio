@@ -33,7 +33,7 @@ const SectionOne = ({ carouselX, setCarouselX }) => {
             <span className="">Project</span>
           </a>
           <a
-            href="#footer"
+            href="#contactContainer"
             className={`text-${
               carouselX.showNavbar ? 'gray-100' : 'transparent'
             } text-lg sm:text-2xl hover:text-green-300 love text-center h-full flex flex-col justify-center w-14 mx-auto cursor-pointer`}

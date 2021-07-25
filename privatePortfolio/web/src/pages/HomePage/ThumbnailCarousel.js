@@ -29,7 +29,7 @@ export const ThumbnailCarousel = ({ carouselX }) => {
 
   return (
     <div
-      className={`thumbnailCarouselContainer w-63 overflow-x-hidden mx-auto relative transform transition-all duration-500 ${
+      className={`thumbnailCarouselContainer w-62 overflow-x-hidden mx-auto relative transform transition-all duration-500 ${
         carouselX.burgerState ? '' : 'translate-y-20 opacity-0'
       }`}
     >

@@ -252,6 +252,46 @@ body {
   }
 }
 
+.spinningOnce {
+  transition: all 0.5s;
+  animation: spinningOnce 0.5s forwards;
+}
+
+@keyframes spinningOnce {
+  0% {
+    opacity: 1;
+    transform: rotateY(-90deg);
+  }
+  90% {
+    opacity: 1;
+    transform: rotateY(20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(7deg);
+  }
+}
+
+@keyframes popin {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  90% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.popin {
+  transition: all 1s;
+  animation: popin 1s forwards;
+}
+
 @keyframes letterOpacity {
   from {
     opacity: 0;

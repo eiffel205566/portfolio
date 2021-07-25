@@ -70,6 +70,8 @@ export const typingMessages = [
 
 export const welcomeMessage = 'Welcome!'
 
+export const CONTACT = 'Contact'
+
 export const mockPictureUrl = [
   {
     regular:

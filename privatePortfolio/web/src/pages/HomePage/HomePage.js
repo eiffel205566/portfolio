@@ -3,7 +3,7 @@ import SectionOne from './SectionOne'
 import SectionTwoLeft from './SectionTwoLeft'
 import SectionTwoRight from './SectionTwoRight'
 import SectionHeader from './SectionHeader'
-import { NOTES, PROJECTONE, typingMessage } from './UtilRandomLetter'
+import { CONTACT, NOTES, PROJECTONE, typingMessage } from './UtilRandomLetter'
 import Footer from './Footer'
 import {
   placeholderPicUrls,
@@ -17,6 +17,9 @@ import SectionThreeProjectOneLeft from './SectionThreeProjectOneLeft'
 import SectionFour from './SectionFour'
 import SectionFive from './SectionFive'
 import { LazyLoadPic } from 'src/components/LazyLoading'
+import Letter from 'src/components/Letter'
+import { Javascript, Tailwind } from 'src/components/svg'
+import { ContactForm } from './ContactForm'
 
 const HomePage = () => {
   const [carouselX, setCarouselX] = useState({
@@ -46,6 +49,7 @@ const HomePage = () => {
     sectionThreeProjectOneLeftVisible: false,
     sectionFourProjectTwoRightVisible: false,
     sectionFiveProjectThreeLeftVisible: false,
+    contactFormVisible: false,
   })
 
   const randomPick = () => {
@@ -156,6 +160,8 @@ const HomePage = () => {
     'sectionFiveProjectThreeLeftPlaceholder'
   )
 
+  const contactForm = document.getElementById('contactContainer')
+
   const landingPageContainer = document.getElementById('landingPageContainer')
   const landingPageContainerRef = useRef(landingPageContainer)
 
@@ -169,7 +175,10 @@ const HomePage = () => {
             setCarouselX((state) => {
               return {
                 ...state,
-                sectionTwoLeftVisible: entry.isIntersecting,
+                sectionTwoLeftVisible:
+                  entry.isIntersecting === false
+                    ? state.sectionTwoLeftVisible
+                    : entry.isIntersecting,
               }
             })
           })
@@ -183,7 +192,10 @@ const HomePage = () => {
             setCarouselX((state) => {
               return {
                 ...state,
-                sectionTwoRightVisible: entry.isIntersecting,
+                sectionTwoRightVisible:
+                  entry.isIntersecting === false
+                    ? state.sectionTwoRightVisible
+                    : entry.isIntersecting,
               }
             })
           })
@@ -197,7 +209,10 @@ const HomePage = () => {
             setCarouselX((state) => {
               return {
                 ...state,
-                sectionThreeProjectOneRightVisible: entry.isIntersecting,
+                sectionThreeProjectOneRightVisible:
+                  entry.isIntersecting === false
+                    ? state.sectionThreeProjectOneRightVisible
+                    : entry.isIntersecting,
               }
             })
           })
@@ -211,7 +226,10 @@ const HomePage = () => {
             setCarouselX((state) => {
               return {
                 ...state,
-                sectionThreeProjectOneLeftVisible: entry.isIntersecting,
+                sectionThreeProjectOneLeftVisible:
+                  entry.isIntersecting === false
+                    ? state.sectionThreeProjectOneLeftVisible
+                    : entry.isIntersecting,
               }
             })
           })
@@ -226,7 +244,10 @@ const HomePage = () => {
             setCarouselX((state) => {
               return {
                 ...state,
-                sectionFourProjectTwoRightVisible: entry.isIntersecting,
+                sectionFourProjectTwoRightVisible:
+                  entry.isIntersecting === false
+                    ? state.sectionFourProjectTwoRightVisible
+                    : entry.isIntersecting,
               }
             })
           })
@@ -240,12 +261,32 @@ const HomePage = () => {
             setCarouselX((state) => {
               return {
                 ...state,
-                sectionFiveProjectThreeLeftVisible: entry.isIntersecting,
+                sectionFiveProjectThreeLeftVisible:
+                  entry.isIntersecting === false
+                    ? state.sectionFiveProjectThreeLeftVisible
+                    : entry.isIntersecting,
               }
             })
           })
         },
         { threshold: 0.3 }
+      )
+
+      const observerContactForm = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            setCarouselX((state) => {
+              return {
+                ...state,
+                contactFormVisible:
+                  entry.isIntersecting === false
+                    ? state.contactFormVisible
+                    : entry.isIntersecting,
+              }
+            })
+          })
+        },
+        { threshold: 0.4 }
       )
 
       //! actually observe things
@@ -255,6 +296,7 @@ const HomePage = () => {
       observerSectionThreeProjectOneLeft.observe(sectionThreeProjectOneLeft)
       observerSectionFourProjectTwoRight.observe(sectionFourProjectTwoRight)
       observerSectionFiveProjectThreeLeft.observe(sectionFiveProjectThreeLeft)
+      observerContactForm.observe(contactForm)
 
       return () => {
         //! clear observer when unmount
@@ -288,6 +330,10 @@ const HomePage = () => {
           observerSectionFiveProjectThreeLeft.unobserve(
             sectionFiveProjectThreeLeft
           )
+        }
+
+        if (contactForm) {
+          observerContactForm.unobserve(contactForm)
         }
       }
     }
@@ -473,10 +519,7 @@ const HomePage = () => {
 
       <SectionFour carouselX={carouselX} setCarouselX={setCarouselX} />
       <SectionFive carouselX={carouselX} setCarouselX={setCarouselX} />
-
-      <section className="contactSection bg-gray-500 relative">
-        <div className="contactContainer max-w-5xl mx-auto flex flex-col sm:flex-row pb-5 sm:pb-0 overflow-hidden"></div>
-      </section>
+      <ContactForm carouselX={carouselX} />
 
       <Footer />
     </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-const useLazyLoad = (src) => {
+const useLazyLoad = (src, setCarouselX) => {
   const [sourceLoaded, setSourceLoaded] = useState(null)
 
   useEffect(() => {
@@ -7,14 +7,25 @@ const useLazyLoad = (src) => {
     img.src = src
     img.onload = () => {
       setSourceLoaded(src)
+      setCarouselX((state) => {
+        return {
+          ...state,
+          isLoadingPic: false,
+        }
+      })
     }
   }, [src])
 
   return sourceLoaded
 }
 
-export const LazyLoadPic = ({ source, placeholder, className }) => {
-  const loaded = useLazyLoad(source)
+export const LazyLoadPic = ({
+  source,
+  placeholder,
+  className,
+  setCarouselX,
+}) => {
+  const loaded = useLazyLoad(source, setCarouselX)
   return (
     <div
       className={className}

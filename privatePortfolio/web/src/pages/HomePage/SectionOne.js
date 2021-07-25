@@ -83,6 +83,7 @@ const SectionOne = ({ carouselX, setCarouselX }) => {
             setCarouselX((state) => {
               return {
                 ...state,
+                isLoadingPic: true,
                 translateX: ++state.translateX,
                 next: state.next === 3 ? 1 : ++state.next,
               }

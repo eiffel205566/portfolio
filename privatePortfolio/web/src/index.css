@@ -51,7 +51,7 @@ body {
 
 .fading {
   z-index: -9 !important;
-  animation: fading 1s forwards;
+  animation: fading 1s forwards 0.1s;
 }
 
 .amazingCarousel_1a {

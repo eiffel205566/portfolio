@@ -23,6 +23,7 @@ const HomePage = () => {
     showNavbar: false,
     burgerState: false,
     translateX: 0,
+    isLoadingPic: false,
     extended: false,
     current: 1, //1st picture layer
     currentA: 1, //2nd picture layer
@@ -388,6 +389,7 @@ const HomePage = () => {
       {/* adding a fix LazyLoadPic component to avoid jumping onMount because async fetch */}
       {carouselX.translateX < 2 ? (
         <LazyLoadPic
+          setCarouselX={setCarouselX}
           source={placeholderPicUrls.regularTwo}
           placeholder={placeholderPicUrls.thumbTwo}
           className={`xamazingCarousel_${carouselX.current} ${
@@ -396,6 +398,7 @@ const HomePage = () => {
         />
       ) : (
         <LazyLoadPic
+          setCarouselX={setCarouselX}
           source={
             carouselX.pictures
               ? carouselX.pictures[carouselX.current]['regular']
@@ -413,6 +416,7 @@ const HomePage = () => {
       )}
 
       <LazyLoadPic
+        setCarouselX={setCarouselX}
         source={
           carouselX.pictures
             ? carouselX.pictures[carouselX.currentA + 5]['regular']

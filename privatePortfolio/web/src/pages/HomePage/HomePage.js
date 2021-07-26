@@ -118,7 +118,7 @@ const HomePage = () => {
           typingTimeId: timeId,
         }
       })
-    }, 4000)
+    }, 6000)
   }
 
   useEffect(() => {

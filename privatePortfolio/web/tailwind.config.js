@@ -20,6 +20,9 @@ module.exports = {
         152: '38rem',
         192: '48rem',
       },
+      animation: {
+        'spin-slow': 'spin 2s linear infinite',
+      },
       width: {
         46: '11.5rem',
         66: '14.5rem',

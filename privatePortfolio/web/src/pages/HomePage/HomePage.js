@@ -50,6 +50,7 @@ const HomePage = () => {
     sectionFourProjectTwoRightVisible: false,
     sectionFiveProjectThreeLeftVisible: false,
     contactFormVisible: false,
+    isSubmitingForm: false,
   })
 
   const randomPick = () => {
@@ -286,7 +287,7 @@ const HomePage = () => {
             })
           })
         },
-        { threshold: 0.4 }
+        { threshold: 0.5 }
       )
 
       //! actually observe things
@@ -519,7 +520,7 @@ const HomePage = () => {
 
       <SectionFour carouselX={carouselX} setCarouselX={setCarouselX} />
       <SectionFive carouselX={carouselX} setCarouselX={setCarouselX} />
-      <ContactForm carouselX={carouselX} />
+      <ContactForm carouselX={carouselX} setCarouselX={setCarouselX} />
 
       <Footer />
     </div>

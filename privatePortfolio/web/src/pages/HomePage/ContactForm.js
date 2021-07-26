@@ -1,26 +1,67 @@
 import { CONTACT } from './UtilRandomLetter'
 import { toast, Toaster } from '@redwoodjs/web/toast'
+import { ClockLoading } from 'src/components/svg'
 
-export const ContactForm = ({ carouselX }) => {
-  const onSubmit = (e) => {
+export const ContactForm = ({ carouselX, setCarouselX }) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     const formItems = Array.from(e.target.elements).filter((item) => {
       if (item?.id) {
         return item
       }
     })
-    // const dataToSubmit = formItems
-    //   .map(
-    //     (element) =>
-    //       encodeURIComponent(element.name) +
-    //       '=' +
-    //       encodeURIComponent(element.value)
-    //   )
-    //   .join('&')
 
-    // console.log(dataToSubmit)
-    formItems.forEach((item) => (item.value = ''))
-    toast.success('Thanks for reaching out!')
+    const regex =
+      /^[a-z0-9_-]{1,}\.{0,}[a-z0-9_+]{0,}@[a-z0-9_-]{1,}\.[a-z0-9_-]{2,6}\b/
+
+    if (formItems[1].value && formItems[1].value.match(regex)) {
+      const dataToSubmit = formItems
+        .map(
+          (element) =>
+            encodeURIComponent(element.name) +
+            '=' +
+            encodeURIComponent(element.value)
+        )
+        .join('&')
+
+      try {
+        setCarouselX((state) => {
+          return {
+            ...state,
+            isSubmitingForm: true,
+          }
+        })
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: dataToSubmit,
+        })
+        toast.success('Thank you for your message')
+        setCarouselX((state) => {
+          return {
+            ...state,
+            isSubmitingForm: false,
+          }
+        })
+      } catch (error) {
+        toast.error('Sorry, something went wrong')
+        setCarouselX((state) => {
+          return {
+            ...state,
+            isSubmitingForm: false,
+          }
+        })
+        return
+      }
+    } else {
+      toast.error('Please check your email address format')
+      setCarouselX((state) => {
+        return {
+          ...state,
+          isSubmitingForm: false,
+        }
+      })
+    }
   }
 
   return (
@@ -112,13 +153,23 @@ export const ContactForm = ({ carouselX }) => {
                   required
                 ></textarea>
               </p>
-              <p>
+              <div className="flex h-8">
                 <input
-                  className="bg-opcaity-100 bg-overlay border w-20 hover:text-green-300 cursor-pointer"
+                  className={`bg-opcaity-100 bg-overlay border w-20 hover:text-green-300 ${
+                    carouselX.isSubmitingForm
+                      ? 'cursor-not-allowed'
+                      : 'cursor-pointer'
+                  }`}
                   type="submit"
                   value="Submit"
+                  disabled={carouselX.isSubmitingForm}
                 />
-              </p>
+                <div className="h-full flex flex-col justify-center">
+                  {carouselX.isSubmitingForm && (
+                    <ClockLoading className="h-6 w-6 text-white" />
+                  )}
+                </div>
+              </div>
             </form>
           </div>
         )}

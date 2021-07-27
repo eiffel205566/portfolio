@@ -1,5 +1,4 @@
 import Letter from 'src/components/Letter'
-import { v4 as uuidv4 } from 'uuid'
 import { ThumbnailCarousel } from './ThumbnailCarousel'
 import { welcomeMessage } from './UtilRandomLetter'
 

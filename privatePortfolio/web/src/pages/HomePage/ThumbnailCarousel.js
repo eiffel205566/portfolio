@@ -70,13 +70,15 @@ export const ThumbnailCarousel = ({ carouselX }) => {
         <div
           onClick={() => {
             setLocalPindex((state) => {
-              const nextValue = Object.is(state.localPictureIndex, null)
-                ? pictureIndex === 0
-                  ? 0
-                  : --pictureIndex
-                : state.localPictureIndex === 0
-                ? 0
-                : --state.localPictureIndex
+              const nextValue = Object.is(state.localPictureIndex, null) //is inital mount>
+                ? carouselX.translateX === 0 //iis inital mount?
+                  ? 0 //if it's initial mount, click on backward set pIndex.localPictureIndex to 0
+                  : pictureIndex === 0 //if not take value of pictureIndex
+                  ? 0 //if pictureIndex at 0, stop at 0
+                  : --pictureIndex //otherwise take decrement by 1
+                : state.localPictureIndex === 0 //if not initial amount
+                ? 0 //check if pIndex.localPictureIndex is at 0, it so, stop at 0
+                : --state.localPictureIndex //otherwise decrement by 1
 
               return {
                 ...state,
@@ -93,12 +95,15 @@ export const ThumbnailCarousel = ({ carouselX }) => {
         onClick={() => {
           setLocalPindex((state) => {
             const nextValue = Object.is(state.localPictureIndex, null)
-              ? pictureIndex === 10
-                ? 10
-                : ++pictureIndex
-              : state.localPictureIndex === 10
-              ? 10
-              : ++state.localPictureIndex
+              ? carouselX.translateX === 0 //is initial mount?
+                ? 1 //if so click on forward set pIndex.localPictureIndex to 1
+                : pictureIndex === 10 //if not take value of pictureIndex
+                ? 10 //if pictureIndex already at 10, stop at 10
+                : ++pictureIndex //otherwise increment it by 1
+              : state.localPictureIndex === 10 //if not initial mount
+              ? 10 //check if pIndex.localPictureIndex is 10, if so, stop at 10
+              : ++state.localPictureIndex //othersie increment by 1
+
             return {
               ...state,
               localPictureIndex: nextValue,
@@ -118,7 +123,7 @@ export const ThumbnailCarousel = ({ carouselX }) => {
 
       <div
         className={`thumbNailCarousel w-231 mx-auto h-20 z-30 flex transform transition-all duration-500 ${
-          carouselX.translateX
+          carouselX.translateX || localPindex?.localPictureIndex
             ? pIndex.pictureIndex === 0 ||
               localPindex?.localPictureIndex === 0 ||
               pIndex.pictureIndex === 0

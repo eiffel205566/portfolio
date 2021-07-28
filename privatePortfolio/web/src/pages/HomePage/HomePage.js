@@ -112,12 +112,6 @@ const HomePage = () => {
         })
       }, 2000)
       timeId = setTimeout(typingMessage, 2000)
-      setCarouselX((state) => {
-        return {
-          ...state,
-          typingTimeId: timeId,
-        }
-      })
     }, 6000)
   }
 
